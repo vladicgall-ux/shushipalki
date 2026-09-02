@@ -1,5 +1,6 @@
 // ===== Данные меню =====
 // Названия и цены — с открытой страницы сообщества «Вкусно едем» (vk.ru/vkusnoedem).
+// Состав указан по общему описанию блюда; при заказе уточняйте точный состав в сообществе.
 const CATEGORIES = [
   { key: 'pizza',   title: 'Пицца' },
   { key: 'rolls',   title: 'Роллы' },
@@ -11,67 +12,92 @@ const CATEGORIES = [
 
 const PRODUCTS = [
   // Пицца
-  { id: 1, cat: 'pizza', name: 'Пепперони', price: 550, emoji: '🍕',
+  { id: 1, cat: 'pizza', name: 'Пепперони', price: 550, emoji: '🍕', hit: true,
     desc: 'Салями, сыр, томатный соус. Маленькая — 350 ₽, большая — 550 ₽.',
+    compo: 'Тесто, томатный соус, сыр моцарелла, салями пепперони',
     photo: 'https://sun9-57.vkuserphoto.ru/impg/c845523/v845523306/41333/HZsESgEa93Q.jpg?size=400x400&quality=95&background=ffffff&crop=0.066,0,0.869,1&sign=5c5b310347ac2f969ac02e0c5fca05cd&c_uniq_tag=f84WijBJf1CHt_H7xueB66tp4UspyHEXuOv91ESYgmc&type=market_thumb' },
   { id: 3, cat: 'pizza', name: 'Пепперони с беконом', price: 550, emoji: '🍕',
-    desc: 'Пикантная пепперони, копчёный бекон и сыр моццарелла.' },
+    desc: 'Пикантная пепперони, копчёный бекон и сыр моццарелла.',
+    compo: 'Тесто, томатный соус, моцарелла, пепперони, копчёный бекон' },
   { id: 23, cat: 'pizza', name: 'Грибная', price: 550, emoji: '🍄',
-    desc: 'Шампиньоны, сыр моццарелла и томатный соус.' },
+    desc: 'Шампиньоны, сыр моццарелла и томатный соус.',
+    compo: 'Тесто, томатный соус, моцарелла, шампиньоны' },
 
   // Роллы
-  { id: 10, cat: 'rolls', name: '«Запечённый риф» с креветкой и крабом', price: 490, emoji: '🍤',
-    desc: 'Запечённый ролл с креветкой, крабом и соусом унаги.' },
+  { id: 10, cat: 'rolls', name: '«Запечённый риф» с креветкой и крабом', price: 490, emoji: '🍤', hit: true,
+    desc: 'Запечённый ролл с креветкой, крабом и соусом унаги.',
+    compo: 'Рис, нори, крем-сыр, креветка, крабовое мясо, соус унаги, кунжут' },
   { id: 11, cat: 'rolls', name: 'Темпура мини', price: 900, emoji: '🍣',
-    desc: 'Хрустящие роллы в темпурной панировке, порция мини.' },
+    desc: 'Хрустящие роллы в темпурной панировке, порция мини.',
+    compo: 'Рис, нори, начинка ролла, темпурная панировка, соус' },
   { id: 12, cat: 'rolls', name: 'Техас', price: 395, emoji: '🍣',
-    desc: 'Запечённый ролл с сыром и пикантной начинкой.' },
+    desc: 'Запечённый ролл с сыром и пикантной начинкой.',
+    compo: 'Рис, нори, сыр, начинка, соус — запечён под сыром' },
   { id: 16, cat: 'rolls', name: 'Харумаки Сяке', price: 420, emoji: '🍣',
-    desc: 'Хрустящий ролл с лососем во фритюрной обёртке.' },
+    desc: 'Хрустящий ролл с лососем во фритюрной обёртке.',
+    compo: 'Рис, нори, лосось, хрустящая фритюрная обёртка' },
   { id: 17, cat: 'rolls', name: 'Харумаки Кани', price: 400, emoji: '🍣',
-    desc: 'Хрустящий ролл с крабом во фритюрной обёртке.' },
+    desc: 'Хрустящий ролл с крабом во фритюрной обёртке.',
+    compo: 'Рис, нори, крабовое мясо, хрустящая фритюрная обёртка' },
   { id: 18, cat: 'rolls', name: 'Дасоку', price: 410, emoji: '🍣',
-    desc: 'Запечённый ролл в темпурной панировке.' },
+    desc: 'Запечённый ролл в темпурной панировке.',
+    compo: 'Рис, нори, начинка, темпурная панировка, соус — запечён' },
   { id: 19, cat: 'rolls', name: 'Куба', price: 395, emoji: '🍣',
-    desc: 'Запечённый ролл с нежной сливочной начинкой.' },
+    desc: 'Запечённый ролл с нежной сливочной начинкой.',
+    compo: 'Рис, нори, сливочная начинка, соус — запечён' },
   { id: 20, cat: 'rolls', name: 'Тайто', price: 430, emoji: '🍣',
-    desc: 'Запечённый ролл с добавлением сыра унаги.' },
+    desc: 'Запечённый ролл с добавлением сыра унаги.',
+    compo: 'Рис, нори, начинка, соус унаги, сыр — запечён' },
   { id: 22, cat: 'rolls', name: 'Лава', price: 400, emoji: '🌶️',
-    desc: 'Острый ролл с соусом спайси и стружкой чили.' },
+    desc: 'Острый ролл с соусом спайси и стружкой чили.',
+    compo: 'Рис, нори, начинка, соус спайси, стружка чили' },
   { id: 24, cat: 'rolls', name: 'Тори Темпура', price: 380, emoji: '🍣',
-    desc: 'Ролл с курицей темпура и сливочным соусом.' },
+    desc: 'Ролл с курицей темпура и сливочным соусом.',
+    compo: 'Рис, нори, курица темпура, сливочный соус' },
   { id: 25, cat: 'rolls', name: 'Гранд Мастер', price: 460, emoji: '🍣',
-    desc: 'Фирменный запечённый ролл с несколькими начинками.' },
+    desc: 'Фирменный запечённый ролл с несколькими начинками.',
+    compo: 'Рис, нори, несколько начинок, фирменный соус — запечён' },
 
   // Сеты
-  { id: 2, cat: 'sets', name: 'Вкусный сет', price: 3350, emoji: '🍱',
-    desc: 'Сборный сет роллов — хватит на компанию из 3–4 человек.' },
+  { id: 2, cat: 'sets', name: 'Вкусный сет', price: 3350, emoji: '🍱', hit: true,
+    desc: 'Сборный сет роллов — хватит на компанию из 3–4 человек.',
+    compo: 'Сборный сет из нескольких видов роллов — точный состав уточняйте при заказе' },
   { id: 4, cat: 'sets', name: 'Супер сет', price: 3150, emoji: '🍱',
-    desc: 'Большой набор фирменных роллов на любой вкус.' },
+    desc: 'Большой набор фирменных роллов на любой вкус.',
+    compo: 'Набор фирменных роллов — точный состав уточняйте при заказе' },
   { id: 6, cat: 'sets', name: 'Компания сет', price: 2860, emoji: '🍱',
-    desc: 'Сет для дружеской компании — классика и запечённые роллы.' },
+    desc: 'Сет для дружеской компании — классика и запечённые роллы.',
+    compo: 'Классические и запечённые роллы — точный состав уточняйте при заказе' },
   { id: 8, cat: 'sets', name: 'Мега сет', price: 3700, emoji: '🍱',
-    desc: 'Самый большой сет меню — максимум роллов в одной коробке.' },
+    desc: 'Самый большой сет меню — максимум роллов в одной коробке.',
+    compo: 'Максимальный набор роллов из меню — точный состав уточняйте при заказе' },
 
   // Бургеры
-  { id: 5, cat: 'burgers', name: 'Чизбургер', price: 330, emoji: '🍔',
-    desc: 'Сочная котлета, сыр чеддер, свежие овощи, фирменный соус.' },
+  { id: 5, cat: 'burgers', name: 'Чизбургер', price: 330, emoji: '🍔', hit: true,
+    desc: 'Сочная котлета, сыр чеддер, свежие овощи, фирменный соус.',
+    compo: 'Булочка, говяжья котлета, сыр чеддер, свежие овощи, фирменный соус' },
   { id: 13, cat: 'burgers', name: 'Бургер Халапеньо', price: 330, emoji: '🌶️',
-    desc: 'Котлета, перец халапеньо, сыр и острый соус.' },
+    desc: 'Котлета, перец халапеньо, сыр и острый соус.',
+    compo: 'Булочка, котлета, перец халапеньо, сыр, острый соус' },
 
   // Шаурма и бурито
-  { id: 7, cat: 'shaurma', name: 'Шаурма классическая', price: 240, emoji: '🌯',
-    desc: 'Курица, свежие овощи и фирменный соус в мягком лаваше.' },
+  { id: 7, cat: 'shaurma', name: 'Шаурма классическая', price: 240, emoji: '🌯', hit: true,
+    desc: 'Курица, свежие овощи и фирменный соус в мягком лаваше.',
+    compo: 'Лаваш, курица, свежие овощи, фирменный соус' },
   { id: 14, cat: 'shaurma', name: 'Сочный Мо', price: 390, emoji: '🌯',
-    desc: 'Плотная шаурма с двойной порцией начинки.' },
+    desc: 'Плотная шаурма с двойной порцией начинки.',
+    compo: 'Лаваш, двойная порция курицы и начинки, соус' },
   { id: 21, cat: 'shaurma', name: 'Бурито с беконом', price: 360, emoji: '🌯',
-    desc: 'Буррито с курицей, беконом, овощами и соусом.' },
+    desc: 'Буррито с курицей, беконом, овощами и соусом.',
+    compo: 'Тортилья, курица, бекон, овощи, соус' },
 
   // Напитки и соусы
   { id: 9, cat: 'drinks', name: 'Чай авторский', price: 150, emoji: '🍵',
-    desc: 'Фирменный чай собственной заварки.' },
+    desc: 'Фирменный чай собственной заварки.',
+    compo: 'Чайная смесь собственной заварки' },
   { id: 15, cat: 'drinks', name: 'Васаби', price: 10, emoji: '🟢',
-    desc: 'Порция васаби к роллам.' },
+    desc: 'Порция васаби к роллам.',
+    compo: 'Порция васаби' },
 ];
 
 // ===== Telegram WebApp =====
@@ -118,6 +144,30 @@ function removeItem(id) {
   renderAll();
 }
 
+// ===== Статус работы (динамически по расписанию Пн–Сб 10:00–22:00) =====
+const statusDotEl = document.getElementById('statusDot');
+const statusTextEl = document.getElementById('statusText');
+
+function renderOpenStatus() {
+  if (!statusDotEl || !statusTextEl) return;
+  const now = new Date();
+  const day = now.getDay(); // 0 = вс
+  const hour = now.getHours();
+  const isSunday = day === 0;
+  const isOpen = !isSunday && hour >= 10 && hour < 22;
+
+  statusDotEl.classList.toggle('fact__dot--live', isOpen);
+  statusDotEl.classList.toggle('fact__dot--off', !isOpen);
+
+  if (isOpen) {
+    statusTextEl.textContent = 'Открыто сейчас · Пн–Сб 10:00–22:00';
+  } else if (isSunday) {
+    statusTextEl.textContent = 'Сегодня выходной · работаем Пн–Сб 10:00–22:00';
+  } else {
+    statusTextEl.textContent = 'Сейчас закрыто · Пн–Сб 10:00–22:00';
+  }
+}
+
 // ===== Рендер каталога =====
 const menuEl = document.getElementById('menu');
 const catnavEl = document.getElementById('catnav');
@@ -150,10 +200,15 @@ function buildCatalog() {
     const addBtn = e.target.closest('[data-add]');
     const plusBtn = e.target.closest('[data-plus]');
     const minusBtn = e.target.closest('[data-minus]');
-    if (addBtn) addItem(Number(addBtn.dataset.add));
-    if (plusBtn) addItem(Number(plusBtn.dataset.plus));
-    if (minusBtn) removeItem(Number(minusBtn.dataset.minus));
+    const card = e.target.closest('.card');
+
+    if (addBtn) { addItem(Number(addBtn.dataset.add)); return; }
+    if (plusBtn) { addItem(Number(plusBtn.dataset.plus)); return; }
+    if (minusBtn) { removeItem(Number(minusBtn.dataset.minus)); return; }
+    if (card) { openProductModal(Number(card.dataset.id)); }
   });
+
+  setupScrollSpy();
 }
 
 function renderCard(p) {
@@ -168,10 +223,11 @@ function renderCard(p) {
          <button data-plus="${p.id}" aria-label="Добавить">+</button>
        </div>`
     : `<button class="card__add" data-add="${p.id}" aria-label="Добавить">+</button>`;
+  const hitBadge = p.hit ? `<span class="card__badge">Хит</span>` : '';
 
   return `
-    <article class="card">
-      <div class="card__media" style="background:${mediaBg(p)}">${media}</div>
+    <article class="card" data-id="${p.id}">
+      <div class="card__media" style="background:${mediaBg(p)}">${hitBadge}${media}</div>
       <div class="card__body">
         <p class="card__name">${p.name}</p>
         <p class="card__desc">${p.desc}</p>
@@ -193,12 +249,36 @@ function renderAll() {
   markActiveChip(activeSection);
   renderCartBar();
   renderSheet();
+  if (currentModalId !== null) renderProductModal(currentModalId);
 }
 
 function markActiveChip(key) {
   if (!key) return;
+  catnavEl.querySelectorAll('.catchip').forEach(c => c.classList.remove('is-active'));
   const chip = catnavEl.querySelector(`[data-cat="${key}"]`);
   if (chip) chip.classList.add('is-active');
+}
+
+// ===== Подсветка активной категории при скролле =====
+let scrollSpyObserver = null;
+function setupScrollSpy() {
+  if (scrollSpyObserver) scrollSpyObserver.disconnect();
+  const sections = CATEGORIES
+    .map(c => document.getElementById('cat-' + c.key))
+    .filter(Boolean);
+  if (!sections.length) return;
+
+  scrollSpyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const key = entry.target.id.replace('cat-', '');
+        markActiveChip(key);
+      }
+    });
+  }, { rootMargin: '-96px 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(s => scrollSpyObserver.observe(s));
+  markActiveChip(CATEGORIES[0].key);
 }
 
 // ===== Корзина: нижняя плашка =====
@@ -228,6 +308,7 @@ const sheetCloseEl = document.getElementById('sheetClose');
 const checkoutBtn = document.getElementById('checkoutBtn');
 
 function openSheet() {
+  closeProductModal();
   renderSheet();
   sheetEl.hidden = false;
   sheetBackdropEl.hidden = false;
@@ -270,6 +351,66 @@ sheetItemsEl.addEventListener('click', (e) => {
   if (minusBtn) removeItem(Number(minusBtn.dataset.minus));
 });
 
+// ===== Карточка товара (детальный просмотр) =====
+const modalEl = document.getElementById('productModal');
+const modalBackdropEl = document.getElementById('productModalBackdrop');
+const modalBodyEl = document.getElementById('productModalBody');
+const modalCloseEl = document.getElementById('productModalClose');
+let currentModalId = null;
+
+function openProductModal(id) {
+  currentModalId = id;
+  renderProductModal(id);
+  modalEl.hidden = false;
+  modalBackdropEl.hidden = false;
+}
+function closeProductModal() {
+  currentModalId = null;
+  modalEl.hidden = true;
+  modalBackdropEl.hidden = true;
+}
+modalCloseEl.addEventListener('click', closeProductModal);
+modalBackdropEl.addEventListener('click', closeProductModal);
+
+function renderProductModal(id) {
+  const p = PRODUCTS.find(p => p.id === id);
+  if (!p) return;
+  const qty = cartQty(p.id);
+  const media = p.photo
+    ? `<img src="${p.photo}" alt="${p.name}" />`
+    : `<span class="product-modal__emoji">${p.emoji}</span>`;
+  const control = qty > 0
+    ? `<div class="card__stepper card__stepper--lg">
+         <button data-minus="${p.id}" aria-label="Убрать">−</button>
+         <span>${qty}</span>
+         <button data-plus="${p.id}" aria-label="Добавить">+</button>
+       </div>`
+    : `<button class="product-modal__add" data-add="${p.id}">Добавить в корзину</button>`;
+
+  modalBodyEl.innerHTML = `
+    <div class="product-modal__media" style="background:${mediaBg(p)}">${media}</div>
+    <div class="product-modal__info">
+      ${p.hit ? '<span class="card__badge card__badge--static">Хит</span>' : ''}
+      <h2 class="product-modal__name">${p.name}</h2>
+      <p class="product-modal__price">${fmt(p.price)}</p>
+      <p class="product-modal__desc">${p.desc}</p>
+      <div class="product-modal__compo">
+        <span class="product-modal__compo-label">Состав</span>
+        <p>${p.compo || 'Состав уточняйте при заказе'}</p>
+      </div>
+      <div class="product-modal__footer">${control}</div>
+    </div>`;
+}
+
+modalBodyEl.addEventListener('click', (e) => {
+  const addBtn = e.target.closest('[data-add]');
+  const plusBtn = e.target.closest('[data-plus]');
+  const minusBtn = e.target.closest('[data-minus]');
+  if (addBtn) addItem(Number(addBtn.dataset.add));
+  if (plusBtn) addItem(Number(plusBtn.dataset.plus));
+  if (minusBtn) removeItem(Number(minusBtn.dataset.minus));
+});
+
 // ===== Оформление заказа =====
 checkoutBtn.addEventListener('click', () => {
   if (cartCount() === 0) return;
@@ -296,3 +437,5 @@ checkoutBtn.addEventListener('click', () => {
 loadCart();
 buildCatalog();
 renderCartBar();
+renderOpenStatus();
+setInterval(renderOpenStatus, 60000);

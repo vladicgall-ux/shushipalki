@@ -21,14 +21,17 @@
       <img src="https://sun1-95.vkuserphoto.ru/tOun0PHBIL_uxi4XUB2lqFkzM2dlMJxr1qaDww/dmBWC0umesM.png" alt="Вкусно едем" loading="eager" />
       <div class="hero__scrim"></div>
     </div>
+    <div class="hero__logo">
+      <img src="https://sun9-61.vkuserphoto.ru/s/v1/ig1/-IjN56OQ8Ya5GGMfJY5BX6xlKtbLRWtp97ZH2VRR-7CsXeE8zet6u62nvjcBJmYAG4-fgg.jpg?quality=96&crop=0,77,592,592&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540&ava=1&u=0iSbHRWcK4eGwCixxtBWdPsyPPt8SNqBGzJ0o0foypw&cs=200x200" alt="Логотип Вкусно едем" />
+    </div>
     <div class="hero__content">
       <span class="hero__eyebrow">Кунашак и район</span>
       <h1 class="hero__title">Вкусно едем</h1>
       <p class="hero__subtitle">Пицца · Суши · Шаурма · Бургеры</p>
       <div class="hero__facts">
         <div class="fact">
-          <span class="fact__dot fact__dot--live"></span>
-          <span>Пн–Сб · 10:00–22:00</span>
+          <span class="fact__dot fact__dot--live" id="statusDot"></span>
+          <span id="statusText">Пн–Сб · 10:00–22:00</span>
         </div>
         <div class="fact">
           <span class="fact__icon">★</span>
@@ -50,7 +53,7 @@
 
   <p class="footnote">
     Доставка по Кунашаку и району — своим курьером или такси по вашим ценам.
-    Меню и цены актуальны на момент публикации.
+    Меню, цены и состав приведены по описанию сообщества; уточняйте детали при заказе.
   </p>
 
   <!-- ===== CART BAR ===== -->
@@ -74,6 +77,16 @@
       <strong id="sheetTotal">0 ₽</strong>
     </div>
     <button class="sheet__checkout" id="checkoutBtn" type="button">Оформить заказ</button>
+  </section>
+
+  <!-- ===== PRODUCT DETAIL MODAL ===== -->
+  <div class="sheet-backdrop" id="productModalBackdrop" hidden></div>
+  <section class="sheet product-modal" id="productModal" hidden aria-label="Карточка товара">
+    <div class="sheet__handle"></div>
+    <button class="sheet__close product-modal__close" id="productModalClose" type="button" aria-label="Закрыть">✕</button>
+    <div class="product-modal__scroll" id="productModalBody">
+      <!-- filled by JS -->
+    </div>
   </section>
 
 </div>
