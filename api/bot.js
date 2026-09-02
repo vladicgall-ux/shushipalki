@@ -36,9 +36,8 @@ module.exports = async (req, res) => {
           chat_id: chatId,
           text:
             '👋 Добро пожаловать в «Вкусно едем»!\n\n' +
-            'Пицца · Суши · Шаурма · Бургеры � доставкой по Кунашаку и району
-
-Ймоя во Telegram 👇',
+            'Пицца · Суши · Шаурма · Бургеры с доставкой по Кунашаку и району.\n\n' +
+            'Откройте меню и оформите заказ прямо здесь, в Telegram 👇',
           reply_markup: {
             inline_keyboard: [[
               { text: '🍕 Открыть меню', web_app: { url: APP_URL || 'https://vkusnoedem.vercel.app' } },
