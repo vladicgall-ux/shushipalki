@@ -1,0 +1,277 @@
+{
+  "categories": [
+    {
+      "key": "pizza",
+      "title": "Пицца"
+    },
+    {
+      "key": "rolls",
+      "title": "Роллы"
+    },
+    {
+      "key": "sets",
+      "title": "Сеты"
+    },
+    {
+      "key": "burgers",
+      "title": "Бургеры"
+    },
+    {
+      "key": "shaurma",
+      "title": "Шаурма и бурито"
+    },
+    {
+      "key": "drinks",
+      "title": "Напитки и соусы"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "cat": "pizza",
+      "name": "Пепперони",
+      "price": 550,
+      "emoji": "🍕",
+      "hit": true,
+      "desc": "Салями, сыр, томатный соус. Маленькая — 350 ₽, большая — 550 ₽.",
+      "compo": "Тесто, томатный соус, сыр моцарелла, салями пепперони",
+      "photo": "https://sun9-57.vkuserphoto.ru/impg/c845523/v845523306/41333/HZsESgEa93Q.jpg?size=400x400&quality=95&background=ffffff&crop=0.066,0,0.869,1&sign=5c5b310347ac2f969ac02e0c5fca05cd&c_uniq_tag=f84WijBJf1CHt_H7xueB66tp4UspyHEXuOv91ESYgmc&type=market_thumb"
+    },
+    {
+      "id": 3,
+      "cat": "pizza",
+      "name": "Пепперони с беконом",
+      "price": 550,
+      "emoji": "🍕",
+      "desc": "Пикантная пепперони, копчёный бекон и сыр моццарелла.",
+      "compo": "Тесто, томатный соус, моцарелла, пепперони, копчёный бекон",
+      "photo": "https://sun9-60.userapi.com/s/v1/ig2/1I0g3OBJIL6XrGNsdnYpcWb1XhVMbFCHx5E4jDj1L_xVW1WIMa2EmsVQWNLb4Ii8swygOp9KcKeUgBowSqCfiSKk.jpg?background=ffffff&crop=0.00000000,127.00000000,1280.00000000,1535.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 23,
+      "cat": "pizza",
+      "name": "Грибная",
+      "price": 550,
+      "emoji": "🍄",
+      "desc": "Шампиньоны, сыр моццарелла и томатный соус.",
+      "compo": "Тесто, томатный соус, моцарелла, шампиньоны"
+    },
+    {
+      "id": 10,
+      "cat": "rolls",
+      "name": "«Запечённый риф» с креветкой и крабом",
+      "price": 490,
+      "emoji": "🍤",
+      "hit": true,
+      "desc": "Запечённый ролл с креветкой, крабом и соусом унаги.",
+      "compo": "Рис, нори, крем-сыр, креветка, крабовое мясо, соус унаги, кунжут",
+      "photo": "https://sun9-4.userapi.com/s/v1/ig2/GpJtabRL6YKpyqrhjaJC_Ubv__bK2SZvriY5euKkeHS9ilQKoCvlt0sLo4D54kd26A_n262PEe6EuszS6wczdblF.jpg?background=ffffff&crop=0.00000000,128.00000000,1919.00000000,2304.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 11,
+      "cat": "rolls",
+      "name": "Темпура мини",
+      "price": 900,
+      "emoji": "🍣",
+      "desc": "Хрустящие роллы в темпурной панировке, порция мини.",
+      "compo": "Рис, нори, начинка ролла, темпурная панировка, соус",
+      "photo": "https://sun9-38.userapi.com/s/v1/ig2/yfC4VxiUHQpSRb7X_DfFlcyP7MmR60HHxyR0KaqLgwrQPjPhbBoBAAbU5HOjBwM-DhYRs2bc3qF2bn_K7nTjEk4G.jpg?background=ffffff&crop=517.00000000,0.00000000,1523.00000000,1829.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 12,
+      "cat": "rolls",
+      "name": "Техас",
+      "price": 395,
+      "emoji": "🍣",
+      "desc": "Запечённый ролл с сыром и пикантной начинкой.",
+      "compo": "Рис, нори, сыр, начинка, соус — запечён под сыром",
+      "photo": "https://sun9-75.userapi.com/s/v1/ig2/W5mEoas38R2Bq5x5JvJha7Fjy2PCZ6qtn-w3capkEHOejslwMeFAj4pzSPDh5XjtAJVdo6pTOGQDPaZpzDLYDVWf.jpg?background=ffffff&crop=315.00000000,0.00000000,928.00000000,1115.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 16,
+      "cat": "rolls",
+      "name": "Харумаки Сяке",
+      "price": 420,
+      "emoji": "🍣",
+      "desc": "Хрустящий ролл с лососем во фритюрной обёртке.",
+      "compo": "Рис, нори, лосось, хрустящая фритюрная обёртка",
+      "photo": "https://sun9-45.userapi.com/s/v1/ig2/RWnKnDMq4LrrjijeT83SJQDf3nFEQuEM7X_K5FxvVnmgaf8vhE4ktL2l3Y0Pqx-DjL3-UnzxVD-kqsvt9yjzYqgC.jpg?background=ffffff&crop=491.00000000,0.00000000,1579.00000000,1895.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 17,
+      "cat": "rolls",
+      "name": "Харумаки Кани",
+      "price": 400,
+      "emoji": "🍣",
+      "desc": "Хрустящий ролл с крабом во фритюрной обёртке.",
+      "compo": "Рис, нори, крабовое мясо, хрустящая фритюрная обёртка",
+      "photo": "https://sun9-43.userapi.com/s/v1/ig2/hIgMLxKTajOJLPOFEV-NcVEeLNHhgZocPAitSBA_3cgL7M8ApRqWGw7JixGWVyL7nepuGrQEScvPxlB91RCsbk48.jpg?background=ffffff&crop=517.00000000,0.00000000,1523.00000000,1829.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 18,
+      "cat": "rolls",
+      "name": "Дасоку",
+      "price": 410,
+      "emoji": "🍣",
+      "desc": "Запечённый ролл в темпурной панировке.",
+      "compo": "Рис, нори, начинка, темпурная панировка, соус — запечён"
+    },
+    {
+      "id": 19,
+      "cat": "rolls",
+      "name": "Куба",
+      "price": 395,
+      "emoji": "🍣",
+      "desc": "Запечённый ролл с нежной сливочной начинкой.",
+      "compo": "Рис, нори, сливочная начинка, соус — запечён"
+    },
+    {
+      "id": 20,
+      "cat": "rolls",
+      "name": "Тайто",
+      "price": 430,
+      "emoji": "🍣",
+      "desc": "Запечённый ролл с добавлением сыра унаги.",
+      "compo": "Рис, нори, начинка, соус унаги, сыр — запечён"
+    },
+    {
+      "id": 22,
+      "cat": "rolls",
+      "name": "Лава",
+      "price": 400,
+      "emoji": "🌶️",
+      "desc": "Острый ролл с соусом спайси и стружкой чили.",
+      "compo": "Рис, нори, начинка, соус спайси, стружка чили"
+    },
+    {
+      "id": 24,
+      "cat": "rolls",
+      "name": "Тори Темпура",
+      "price": 380,
+      "emoji": "🍣",
+      "desc": "Ролл с курицей темпура и сливочным соусом.",
+      "compo": "Рис, нори, курица темпура, сливочный соус"
+    },
+    {
+      "id": 25,
+      "cat": "rolls",
+      "name": "Гранд Мастер",
+      "price": 460,
+      "emoji": "🍣",
+      "desc": "Фирменный запечённый роллс снесколькими начинками.",
+      "compo": "Рис, нори, несколько начинок, фирменный состав — запечён"
+    },
+    {
+      "id": 2,
+      "cat": "sets",
+      "name": "Вкусный сет",
+      "price": 3350,
+      "emoji": "🍱",
+      "hit": true,
+      "desc": "Сборный сет роллов — хватит на компанию из �B�%2–4 человек.",
+      "compo": "Сборный сет из нескольких видов роллов — точный состав уточняйте при заказе",
+      "photo": "https://sun9-38.userapi.com/s/v1/ig2/OPvT8W_JFp9ZqSx3e1GDjLGaSZ-rI6ayKUISfK0krNsEsA1sjMuKQcsT5134p5h31JQoukOxjsKj2sga3nwPx0u0.jpg?background=ffffff&crop=426.00000000,0.00000000,1067.00000000,1280.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 4,
+      "cat": "sets",
+      "name": "Супер сет",
+      "price": 3150,
+      "emoji": "🍱",
+      "desc": "Большой набор фирменных роллов на люp�ен вкус.",
+      "compo": "Набор фирменных роллов — точный состав уточняйте при заказе",
+      "photo": "https://sun9-22.userapi.com/s/v1/ig2/KaZdkIwW_YF6fYLwKX0QagmvKUXwe0rF2G35VMmi3Hmdowe4HgpZ8vP1NJX2Y4RChR92L2aMWtUt_RO2Bnh2NJBo.jpg?background=ffffff&crop=426.00000000,0.00000000,1067.00000000,1280.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 6,
+      "cat": "sets",
+      "name": "Компания сет",
+      "price": 2860,
+      "emoji": "🍱",
+      "desc": "Сет для дружеской компании — классика и запечённые роллы.з",
+      "compo": "Классические и запечённые роллы — точный состав уточняйте при заказе",
+      "photo": "https://sun9-25.userapi.com/s/v1/ig2/uNv7lgsi_aC0OJOxlgSxGBI7dTQt3wu1t4Ma2Z6nHv4JTVLmUSKk5BZkWsFkyMLvjxrbdj0TNFunPRIaCvLQdRep.jpg?background=ffffff&crop=426.00000000,0.00000000,1067.00000000,1280.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 8,
+      "cat": "sets",
+      "name": "Мега сет",
+      "price": 3700,
+      "emoji": "🍱",
+      "desc": "Самый большой сет меню — максимум роллов в одной коробке.",
+      "compo": "Максимальный набор роллов из меню — точный состав уточняйте при заказе",
+      "photo": "https://sun9-72.userapi.com/s/v1/ig2/1V_-oDmRMtmGHWKAUPJGeod7Q6PxiF89j-UKJ_5vX3gs6VwIa0SqUT8a3AcGezDnhd83nVs5KrjgCym04DmzLmB7.jpg?background=ffffff&crop=426.00000000,0.00000000,1067.00000000,1280.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 5,
+      "cat": "burgers",
+      "name": "Чизбургер",
+      "price": 330,
+      "emoji": "🍔",
+      "hit": true,
+      "desc": "Сочная котлета, сыр чеддер, свежие овощи, фирменный соус.",
+      "compo": "Булочка, говяжья котлета, сыр чеддер, свежие овощи, фирменный соус",
+      "photo": "https://sun9-24.vkuserphoto.ru/impg/c855328/v855328733/67f8e/YJDtWRNWK3w.jpg?size=0x360&quality=95&background=ffffff&crop=0.102,0,0.656,1&sign=67a44e275502e9f8a10b0c7892b9d2c5&c_uniq_tag=Ud0qtczuNDlIIk1_UoWUJATJkyM7aOyMfp6kAzbSOpA&type=market_thumb"
+    },
+    {
+      "id": 13,
+      "cat": "burgers",
+      "name": "Бургер Халапеньо",
+      "price": 330,
+      "emoji": "🌶️",
+      "desc": "Котлета, перец халапеньо, сыр и острый соус.",
+      "compo": "Булочка, котлета, перец халапеньо, сыр, острый соус",
+      "photo": "https://sun9-65.userapi.com/s/v1/ig2/DUJ4M6q3Ol_St3lZzYK-UH5pSu3_5ov6441RC4UVM5tksi42n-kmGLFi5cbgLTKGsjhqVzMAvYDD53RqzApnXxzq.jpg?background=ffffff&crop=481.00000000,0.00000000,1600.00000000,1920.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 7,
+      "cat": "shaurma",
+      "name": "Шаурма классическая",
+      "price": 240,
+      "emoji": "🌯",
+      "hit": true,
+      "desc": "Курица, свежие овощи и фирменный соус в мягком лаваше.",
+      "compo": "Лаваш, курица, свежие овощи, фирменный соус",
+      "photo": "https://sun9-12.vkuserphoto.ru/impg/c841537/v841537417/3a2eb/KIbQS5zCR8w.jpg?size=0x360&quality=95&background=ffffff&crop=0.063,0,0.577,1&sign=d0918d6b6de452ea8e5e706de02b80be&c_uniq_tag=L2jP8uOXrll-DtKD7JmgjiZEfgoNVwjnWLpeUzpC16Y&type=market_thumb"
+    },
+    {
+      "id": 14,
+      "cat": "shaurma",
+      "name": "Сочный Мо",
+      "price": 390,
+      "emoji": "🌯",
+      "desc": "Плотная шаурма с двойной порцией начинки.",
+      "compo": "Лаваш, двойная порция курицы и начинки, соус",
+      "photo": "https://sun9-53.userapi.com/s/v1/ig2/Ur-cqODlYBDMiEg3qI1-rT3oM2dShAlsM6LTYI3HD1th30hkjsyuICpv21pn2ZK8f0SrfIouY8F1_wT2J1Jyk3r.jpg?background=ffffff&crop=426.00000000,0.00000000,1067.00000000,1280.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 21,
+      "cat": "shaurma",
+      "name": "Бурито с беконом",
+      "price": 360,
+      "emoji": "🌯",
+      "desc": "Буррито с курицей, беконом, овощами и соусом.",
+      "compo": "Тортилья, курица, бекон, овощи, соус"
+    },
+    {
+      "id": 9,
+      "cat": "drinks",
+      "name": "Чай авторский",
+      "price": 150,
+      "emoji": "🍵",
+      "desc": "Фирменный чай собственной заварки.",
+      "compo": "Чайная смесь собственной заварки",
+      "photo": "https://sun9-5.userapi.com/s/v1/ig2/HR2urgg5oKvhUl5lVIMvQ4G8-iWoB2hSxJAF-xzZUYSTg5-mDEt-q20RK3RWEz_2LXXTckoEudoIYdCccdc3-fUR.jpg?background=ffffff&crop=0.00000000,97.00000000,905.00000000,1085.00000000&quality=90&size=300x360"
+    },
+    {
+      "id": 15,
+      "cat": "drinks",
+      "name": "Васаби",
+      "price": 10,
+      "emoji": "🟢",
+      "desc": "Порция васаби к роллам.",
+      "compo": "Порция васаби",
+      "photo": "https://sun9-22.userapi.com/s/v1/ig2/ANvBlGeHaRj1-hcN9Pv1JnqUmZR2NcQYX98TiqUdTCVc8gOCfDNl7zNUQQ2TnQUfzblKsOfQHUKHr7VTb7e6yn2N.jpg?background=ffffff&crop=49.00000000,0.00000000,499.00000000,600.00000000&quality=90&size=300x360"
+    }
+  ]
+}

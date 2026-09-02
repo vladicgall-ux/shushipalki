@@ -18,7 +18,8 @@ const PRODUCTS = [
     photo: 'https://sun9-57.vkuserphoto.ru/impg/c845523/v845523306/41333/HZsESgEa93Q.jpg?size=400x400&quality=95&background=ffffff&crop=0.066,0,0.869,1&sign=5c5b310347ac2f969ac02e0c5fca05cd&c_uniq_tag=f84WijBJf1CHt_H7xueB66tp4UspyHEXuOv91ESYgmc&type=market_thumb' },
   { id: 3, cat: 'pizza', name: 'Пепперони с беконом', price: 550, emoji: '🍕',
     desc: 'Пикантная пепперони, копчёный бекон и сыр моццарелла.',
-    compo: 'Тесто, томатный соус, моцарелла, пепперони, копчёный бекон' },
+    compo: 'Тесто, томатный соус, моцарелла, пепперони, копчёный бекон',
+    photo: 'https://sun9-60.userapi.com/s/v1/ig2/1I0g3OBJIL6XrGNsdnYpcWb1XhVMbFCHx5E4jDj1L_xVW1WIMa2EmsVQWNLb4Ii8swygOp9KcKeUgBowSqCfiSKk.jpg?background=ffffff&crop=0.00000000,127.00000000,1280.00000000,1535.00000000&quality=90&size=300x360' },
   { id: 23, cat: 'pizza', name: 'Грибная', price: 550, emoji: '🍄',
     desc: 'Шампиньоны, сыр моццарелла и томатный соус.',
     compo: 'Тесто, томатный соус, моцарелла, шампиньоны' },
@@ -61,32 +62,40 @@ const PRODUCTS = [
   // Сеты
   { id: 2, cat: 'sets', name: 'Вкусный сет', price: 3350, emoji: '🍱', hit: true,
     desc: 'Сборный сет роллов — хватит на компанию из 3–4 человек.',
-    compo: 'Сборный сет из нескольких видов роллов — точный состав уточняйте при заказе' },
+    compo: 'Сборный сет из нескольких видов роллов — точный состав уточняйте при заказе',
+    photo: 'https://sun9-38.userapi.com/s/v1/ig2/OPvT8W_JFp9ZqSx3e1GDjLGaSZ-rI6ayKUISfK0krNsEsA1sjMuKQcsT5134p5h31JQoukOxjsKj2sga3nwPx0u0.jpg?background=ffffff&crop=426.00000000,0.00000000,1067.00000000,1280.00000000&quality=90&size=300x360' },
   { id: 4, cat: 'sets', name: 'Супер сет', price: 3150, emoji: '🍱',
     desc: 'Большой набор фирменных роллов на любой вкус.',
-    compo: 'Набор фирменных роллов — точный состав уточняйте при заказе' },
+    compo: 'Набор фирменных роллов — точный состав уточняйте при заказе',
+    photo: 'https://sun9-22.userapi.com/s/v1/ig2/KaZdkIwW_YF6fYLwKX0QagmvKUXwe0rF2G35VMmi3Hmdowe4HgpZ8vP1NJX2Y4RChR92L2aMWtUt_RO2Bnh2NJBo.jpg?background=ffffff&crop=426.00000000,0.00000000,1067.00000000,1280.00000000&quality=90&size=300x360' },
   { id: 6, cat: 'sets', name: 'Компания сет', price: 2860, emoji: '🍱',
-    desc: 'Сет для дружеской компании — классика и запечённые роллы.',
-    compo: 'Классические и запечённые роллы — точный состав уточняйте при заказе' },
+    desc: 'Сет для дружеской компании - классика и запечённые роллы.з',
+    compo: 'Классические и запечённые роллы — точный состав уточняйте при заказе',
+    photo: 'https://sun9-25.userapi.com/s/v1/ig2/uNv7lgsi_aC0OJOxlgSxGBI7dTQt3wu1t4Ma2Z6nHv4JTVLmUSKk5BZkWsFkyMLvjxrbdj0TNFunPRIaCvLQdRep.jpg?background=ffffff&crop=426.00000000,0.00000000,1067.00000000,1280.00000000&quality=90&size=300x360' },
   { id: 8, cat: 'sets', name: 'Мега сет', price: 3700, emoji: '🍱',
     desc: 'Самый большой сет меню — максимум роллов в одной коробке.',
-    compo: 'Максимальный набор роллов из меню — точный состав уточняйте при заказе' },
+    compo: 'Максимальный набор роллов из меню — точный состав уточняйте при заказе',
+    photo: 'https://sun9-72.userapi.com/s/v1/ig2/1V_-oDmRMtmGHWKAUPJGeod7Q6PxiF89j-UKJ_5vX3gs6VwIa0SqUT8a3AcGezDnhd83nVs5KrjgCym04DmzLmB7.jpg?background=ffffff&crop=426.00000000,0.00000000,1067.00000000,1280.00000000&quality=90&size=300x360' },
 
   // Бургеры
   { id: 5, cat: 'burgers', name: 'Чизбургер', price: 330, emoji: '🍔', hit: true,
     desc: 'Сочная котлета, сыр чеддер, свежие овощи, фирменный соус.',
-    compo: 'Булочка, говяжья котлета, сыр чеддер, свежие овощи, фирменный соус' },
+    compo: 'Булочка, говяжья котлета, сыр чеддер, свежие овощи, фирменный соус',
+    photo: 'https://sun9-24.vkuserphoto.ru/impg/c855328/v855328733/67f8e/YJDtWRNWK3w.jpg?size=0x360&quality=95&background=ffffff&crop=0.102,0,0.656,1&sign=67a44e275502e9f8a10b0c7892b9d2c5&c_uniq_tag=Ud0qtczuNDlIIk1_UoWUJATJkyM7aOyMfp6kAzbSOpA&type=market_thumb' },
   { id: 13, cat: 'burgers', name: 'Бургер Халапеньо', price: 330, emoji: '🌶️',
     desc: 'Котлета, перец халапеньо, сыр и острый соус.',
-    compo: 'Булочка, котлета, перец халапеньо, сыр, острый соус' },
+    compo: 'Булочка, котлета, перец халапеньо, сыр, острый соус',
+    photo: 'https://sun9-65.userapi.com/s/v1/ig2/DUJ4M6q3Ol_St3lZzYK-UH5pSu3_5ov6441RC4UVM5tksi42n-kmGLFi5cbgLTKGsjhqVzMAvYDD53RqzApnXxzq.jpg?background=ffffff&crop=481.00000000,0.00000000,1600.00000000,1920.00000000&quality=90&size=300x360' },
 
   // Шаурма и бурито
-  { id: 7, cat: 'shaurma', name: 'Шаурма классическая', price: 240, emoji: '🌯', hit: true,
+  { id: 7, cat: 'shaurma', name: 'Классическая шаурма', price: 240, emoji: '🌯', hit: true,
     desc: 'Курица, свежие овощи и фирменный соус в мягком лаваше.',
-    compo: 'Лаваш, курица, свежие овощи, фирменный соус' },
+    compo: 'Лаваш, курица, свежие овощи, фирменный соус',
+    photo: 'https://sun9-12.vkuserphoto.ru/impg/c841537/v841537417/3a2eb/KIbQS5zCR8w.jpg?size=0x360&quality=95&background=ffffff&crop=0.063,0,0.577,1&sign=d0918d6b6de452ea8e5e706de02b80be&c_uniq_tag=L2jP8uOXrll-DtKD7JmgjiZEfgoNVwjnWLpeUzpC16Y&type=market_thumb' },
   { id: 14, cat: 'shaurma', name: 'Сочный Мо', price: 390, emoji: '🌯',
     desc: 'Плотная шаурма с двойной порцией начинки.',
-    compo: 'Лаваш, двойная порция курицы и начинки, соус' },
+    compo: 'Лаваш, двойная порция курицы и начинки, соус',
+    photo: 'https://sun9-53.userapi.com/s/v1/ig2/Ur-cqODlYBDMiEg3qI1-rT3oM2dShAlsM6LTYI3HD1th30hkjsyuICpv21pn2ZK8f0SrfIouY8F1_wT2J1Jyk3r.jpg?background=ffffff&crop=426.00000000,0.00000000,1067.00000000,1280.00000000&quality=90&size=300x360' },
   { id: 21, cat: 'shaurma', name: 'Бурито с беконом', price: 360, emoji: '🌯',
     desc: 'Буррито с курицей, беконом, овощами и соусом.',
     compo: 'Тортилья, курица, бекон, овощи, соус' },
@@ -94,10 +103,12 @@ const PRODUCTS = [
   // Напитки и соусы
   { id: 9, cat: 'drinks', name: 'Чай авторский', price: 150, emoji: '🍵',
     desc: 'Фирменный чай собственной заварки.',
-    compo: 'Чайная смесь собственной заварки' },
+    compo: 'Чайная смесь собственной заварки',
+    photo: 'https://sun9-5.userapi.com/s/v1/ig2/HR2urgg5oKvhUl5lVIMvQ4G8-iWoB2hSxJAF-xzZUYSTg5-mDEt-q20RK3RWEz_2LXXTckoEudoIYdCccdc3-fUR.jpg?background=ffffff&crop=0.00000000,97.00000000,905.00000000,1085.00000000&quality=90&size=300x360' },
   { id: 15, cat: 'drinks', name: 'Васаби', price: 10, emoji: '🟢',
     desc: 'Порция васаби к роллам.',
-    compo: 'Порция васаби' },
+    compo: 'Порция васаби',
+    photo: 'https://sun9-22.userapi.com/s/v1/ig2/ANvBlGeHaRj1-hcN9Pv1JnqUmZR2NcQYX98TiqUdTCVc8gOCfDNl7zNUQQ2TnQUfzblKsOfQHUKHr7VTb7e6yn2N.jpg?background=ffffff&crop=49.00000000,0.00000000,499.00000000,600.00000000&quality=90&size=300x360' },
 ];
 
 // ===== Telegram WebApp =====
@@ -290,11 +301,13 @@ function renderCartBar() {
   const count = cartCount();
   if (count === 0) {
     cartbarEl.hidden = true;
+    syncMainButton();
     return;
   }
   cartbarEl.hidden = false;
   cartCountEl.textContent = count;
   cartSumEl.textContent = fmt(cartTotal());
+  syncMainButton();
 }
 
 cartbarEl.addEventListener('click', () => openSheet());
@@ -412,26 +425,109 @@ modalBodyEl.addEventListener('click', (e) => {
 });
 
 // ===== Оформление заказа =====
-checkoutBtn.addEventListener('click', () => {
+const custNameEl = document.getElementById('custName');
+const custPhoneEl = document.getElementById('custPhone');
+const custAddressEl = document.getElementById('custAddress');
+const custCommentEl = document.getElementById('custComment');
+const orderErrorEl = document.getElementById('orderError');
+const deliveryToggleEl = document.querySelector('.order-form__toggle');
+let deliveryMode = 'courier'; // 'courier' | 'pickup'
+
+if (deliveryToggleEl) {
+  deliveryToggleEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.order-form__toggle-btn');
+    if (!btn) return;
+    deliveryMode = btn.dataset.delivery;
+    deliveryToggleEl.querySelectorAll('.order-form__toggle-btn').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    custAddressEl.hidden = deliveryMode === 'pickup';
+    custAddressEl.required = deliveryMode === 'courier';
+  });
+}
+
+function showOrderError(msg) {
+  orderErrorEl.textContent = msg;
+  orderErrorEl.hidden = false;
+}
+function clearOrderError() {
+  orderErrorEl.hidden = true;
+}
+
+async function submitOrder() {
   if (cartCount() === 0) return;
+  clearOrderError();
+
+  const name = custNameEl.value.trim();
+  const phone = custPhoneEl.value.trim();
+  const address = custAddressEl.value.trim();
+  const comment = custCommentEl.value.trim();
+
+  if (!name) return showOrderError('Укажите имя');
+  if (!phone) return showOrderError('Укажите телефон');
+  if (deliveryMode === 'courier' && !address) return showOrderError('Укажите адрес доставки');
+
   const order = Object.entries(cart).map(([id, qty]) => {
     const p = PRODUCTS.find(p => p.id === Number(id));
     return { name: p.name, qty, price: p.price };
   });
-  const payload = JSON.stringify({ items: order, total: cartTotal() });
 
-  if (tg && tg.sendData) {
-    tg.sendData(payload);
-    tg.close();
-  } else {
-    const lines = order.map(o => `• ${o.name} × ${o.qty} — ${fmt(o.price * o.qty)}`).join('\n');
-    alert(
-      `Заказ сформирован:\n\n${lines}\n\nИтого: ${fmt(cartTotal())}\n\n` +
-      `Откройте приложение через кнопку в Telegram-боте, чтобы отправить заказ напрямую, ` +
-      `или напишите в сообщество: vk.ru/vkusnoedem`
-    );
+  const payload = {
+    initData: tg ? tg.initData : '',
+    customer: { name, phone, address, pickup: deliveryMode === 'pickup', comment },
+    items: order,
+    total: cartTotal(),
+  };
+
+  checkoutBtn.disabled = true;
+  checkoutBtn.textContent = 'ОтправляемҦ';
+
+  try {
+    const res = await fetch('/api/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || 'Ошибка отправки заказа');
+
+    cart = {};
+    saveCart();
+    closeSheet();
+    renderAll();
+
+    if (tg) {
+      tg.showAlert ? tg.showAlert('Заказ отправлен! Мы свяжемся с вами для подтверждения.') : alert('Заказ отправлен!');
+      if (tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+    } else {
+      alert('Заказ отправлен! Мы свяжемся с вами для подтверждения.');
+    }
+  } catch (e) {
+    showOrderError('Не удалось отправить заказ. Попробуйте ещё раз или напишите в сообщество: vk.ru/vkusnoedem');
+  } finally {
+    checkoutBtn.disabled = false;
+    checkoutBtn.textContent = 'Оформить заказ';
   }
-});
+}
+
+checkoutBtn.addEventListener('click', submitOrder);
+
+// ===== Telegram MainButton (дублирует кнопку оформления заказа) =====
+function syncMainButton() {
+  if (!tg || !tg.MainButton) return;
+  const count = cartCount();
+  if (count > 0) {
+    tg.MainButton.setText(`Оформить заказ на ${fmt(cartTotal())}`);
+    tg.MainButton.show();
+  } else {
+    tg.MainButton.hide();
+  }
+}
+if (tg && tg.MainButton) {
+  tg.MainButton.onClick(() => {
+    if (sheetEl.hidden) openSheet();
+    else submitOrder();
+  });
+}
 
 // ===== Запуск =====
 loadCart();

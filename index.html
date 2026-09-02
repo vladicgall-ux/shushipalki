@@ -76,6 +76,19 @@
       <span>Итого</span>
       <strong id="sheetTotal">0 ₽</strong>
     </div>
+
+    <div class="order-form">
+      <div class="order-form__toggle">
+        <button type="button" class="order-form__toggle-btn is-active" data-delivery="courier">Доставка</button>
+        <button type="button" class="order-form__toggle-btn" data-delivery="pickup">Самовывоз</button>
+      </div>
+      <input class="order-form__input" id="custName" type="text" placeholder="Ваше имя" autocomplete="name" />
+      <input class="order-form__input" id="custPhone" type="tel" placeholder="Телефон" autocomplete="tel" />
+      <input class="order-form__input" id="custAddress" type="text" placeholder="Адрес доставки" autocomplete="street-address" />
+      <textarea class="order-form__input order-form__textarea" id="custComment" placeholder="Комментарий к заказу (необязательно)"></textarea>
+      <p class="order-form__error" id="orderError" hidden></p>
+    </div>
+
     <button class="sheet__checkout" id="checkoutBtn" type="button">Оформить заказ</button>
   </section>
 
