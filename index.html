@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<title>Вкусно едем — доставка в Кунашаке</title>
+<meta name="description" content="Пицца, суши, шаурма и бургеры с доставкой по Кунашаку и району" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="hero__media">
+      <img src="https://sun1-95.vkuserphoto.ru/tOun0PHBIL_uxi4XUB2lqFkzM2dlMJxr1qaDww/dmBWC0umesM.png" alt="Вкусно едем" loading="eager" />
+      <div class="hero__scrim"></div>
+    </div>
+    <div class="hero__content">
+      <span class="hero__eyebrow">Кунашак и район</span>
+      <h1 class="hero__title">Вкусно едем</h1>
+      <p class="hero__subtitle">Пицца · Суши · Шаурма · Бургеры</p>
+      <div class="hero__facts">
+        <div class="fact">
+          <span class="fact__dot fact__dot--live"></span>
+          <span>Пн–Сб · 10:00–22:00</span>
+        </div>
+        <div class="fact">
+          <span class="fact__icon">★</span>
+          <span>Военным — скидка 10% по удостоверению</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== CATEGORY NAV ===== -->
+  <nav class="catnav" id="catnav">
+    <!-- filled by JS -->
+  </nav>
+
+  <!-- ===== MENU ===== -->
+  <main class="menu" id="menu">
+    <!-- filled by JS -->
+  </main>
+
+  <p class="footnote">
+    Доставка по Кунашаку и району — своим курьером или такси по вашим ценам.
+    Меню и цены актуальны на момент публикации.
+  </p>
+
+  <!-- ===== CART BAR ===== -->
+  <button class="cartbar" id="cartbar" type="button" hidden>
+    <span class="cartbar__count" id="cartCount">0</span>
+    <span class="cartbar__label">Корзина</span>
+    <span class="cartbar__sum" id="cartSum">0 ₽</span>
+  </button>
+
+  <!-- ===== CART SHEET ===== -->
+  <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+  <section class="sheet" id="sheet" hidden aria-label="Корзина">
+    <div class="sheet__handle"></div>
+    <div class="sheet__head">
+      <h2>Ваш заказ</h2>
+      <button class="sheet__close" id="sheetClose" type="button" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="sheet__items" id="sheetItems"></div>
+    <div class="sheet__total">
+      <span>Итого</span>
+      <strong id="sheetTotal">0 ₽</strong>
+    </div>
+    <button class="sheet__checkout" id="checkoutBtn" type="button">Оформить заказ</button>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
