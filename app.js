@@ -588,6 +588,7 @@ const cartSumEl = document.getElementById('cartSum');
 
 function renderCartBar() {
   const count = cartCount();
+  document.body.classList.toggle('has-cartbar', count > 0);
   if (count === 0) {
     cartbarEl.hidden = true;
     syncMainButton();

@@ -315,6 +315,37 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   from { transform: translateY(16px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+/* ===== CALL BUTTON ===== */
+.call-fab-wrap {
+  position: fixed;
+  left: 16px; right: 16px;
+  bottom: calc(16px + var(--safe-bottom));
+  max-width: 528px;
+  margin: 0 auto;
+  z-index: 32;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+  transition: bottom .2s ease;
+}
+body.has-cartbar .call-fab-wrap {
+  bottom: calc(82px + var(--safe-bottom));
+}
+.call-fab {
+  pointer-events: auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--chili);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 22px rgba(229,55,46,.4);
+  transition: transform .1s ease;
+}
+.call-fab:active { transform: scale(.92); }
+
 .cartbar__count {
   background: rgba(255,255,255,.22);
   min-width: 24px;
