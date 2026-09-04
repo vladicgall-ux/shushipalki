@@ -45,82 +45,44 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 
 /* ===== HERO ===== */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
 .hero {
   position: relative;
-  height: 258px;
+}
+.hero__banner {
+  width: 100%;
+  aspect-ratio: 1200 / 301;
   overflow: hidden;
 }
-.hero__media {
-  position: absolute;
-  inset: 0;
-}
-.hero__media img {
+.hero__banner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 35%;
-}
-.hero__scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(22,17,13,.15) 0%, rgba(22,17,13,.55) 55%, var(--bg) 100%);
-}
-.hero__logo {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  z-index: 2;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(255,255,255,.85);
-  box-shadow: 0 4px 14px rgba(0,0,0,.35);
-}
-.hero__logo img { width: 100%; height: 100%; object-fit: cover; }
-
-.hero__content {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  padding: 0 20px 20px;
-}
-.hero__eyebrow {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--saffron);
-  letter-spacing: .02em;
-  margin-bottom: 6px;
-}
-.hero__title {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 1.05;
-  color: #fff;
-  text-shadow: 0 2px 14px rgba(0,0,0,.35);
-}
-.hero__subtitle {
-  margin: 6px 0 14px;
-  font-size: 15px;
-  font-weight: 600;
-  color: rgba(245,236,223,.85);
 }
 .hero__facts {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding: 14px 20px 4px;
 }
 .fact {
   display: flex;
   align-items: center;
   gap: 7px;
   font-size: 12.5px;
-  color: rgba(245,236,223,.8);
+  color: var(--text-invert-muted);
 }
 .fact__dot {
   width: 7px; height: 7px; border-radius: 50%;
-  background: var(--text-faint);
+  background: var(--text-invert-muted);
   transition: background .2s ease, box-shadow .2s ease;
 }
 .fact__dot--live { background: #67c76a; box-shadow: 0 0 0 3px rgba(103,199,106,.2); }

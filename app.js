@@ -116,8 +116,8 @@ const tg = window.Telegram ? window.Telegram.WebApp : null;
 if (tg) {
   tg.ready();
   tg.expand();
-  try { tg.setHeaderColor('#F6F4F1'); } catch (e) {}
-  try { tg.setBackgroundColor('#F6F4F1'); } catch (e) {}
+  try { tg.setHeaderColor('#2E1F1B'); } catch (e) {}
+  try { tg.setBackgroundColor('#2E1F1B'); } catch (e) {}
 }
 
 // ===== Состояние корзины =====
