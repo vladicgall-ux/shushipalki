@@ -59,7 +59,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .hero__banner {
   width: 100%;
-  aspect-ratio: 1200 / 301;
+  aspect-ratio: 830 / 301;
   overflow: hidden;
 }
 .hero__banner img {

@@ -428,6 +428,43 @@ function renderOpenStatus() {
   }
 }
 
+// ===== Погода в Кунашаке (живые данные, Open-Meteo, без ключа) =====
+// Координаты с. Кунашак, Челябинская обл.: 55.70155, 61.54932
+const WEATHER_URL = 'https://api.open-meteo.com/v1/forecast?latitude=55.70155&longitude=61.54932&current_weather=true&timezone=Asia%2FYekaterinburg';
+const weatherFactEl = document.getElementById('weatherFact');
+const weatherIconEl = document.getElementById('weatherIcon');
+const weatherTextEl = document.getElementById('weatherText');
+
+function weatherEmoji(code, isDay) {
+  if (code === 0) return isDay ? '☀️' : '🌙';
+  if (code === 1 || code === 2) return isDay ? '🌤️' : '☁️';
+  if (code === 3) return '☁️';
+  if (code === 45 || code === 48) return '🌫️';
+  if (code >= 51 && code <= 67) return '🌧️';
+  if (code >= 71 && code <= 77) return '❄️';
+  if (code >= 80 && code <= 82) return '🌦️';
+  if (code >= 95) return '⛈️';
+  return '🌡️';
+}
+
+async function loadWeather() {
+  if (!weatherFactEl) return;
+  try {
+    const res = await fetch(WEATHER_URL);
+    if (!res.ok) throw new Error('weather http ' + res.status);
+    const data = await res.json();
+    const cw = data.current_weather;
+    if (!cw) throw new Error('no current_weather');
+    const temp = Math.round(cw.temperature);
+    const windMs = (cw.windspeed / 3.6).toFixed(1);
+    weatherIconEl.textContent = weatherEmoji(cw.weathercode, cw.is_day === 1);
+    weatherTextEl.textContent = `В Кунашаке ${temp > 0 ? '+' : ''}${temp}°C, ветер ${windMs} м/с`;
+    weatherFactEl.hidden = false;
+  } catch (e) {
+    weatherFactEl.hidden = true;
+  }
+}
+
 // ===== Рендер каталога =====
 const menuEl = document.getElementById('menu');
 const catnavEl = document.getElementById('catnav');
@@ -787,3 +824,5 @@ buildCatalog();
 renderCartBar();
 renderOpenStatus();
 setInterval(renderOpenStatus, 60000);
+loadWeather();
+setInterval(loadWeather, 15 * 60000);
