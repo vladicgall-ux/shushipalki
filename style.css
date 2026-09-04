@@ -1,5 +1,6 @@
 :root {
-  --bg: #F6F4F1;
+  --bg: #2E1F1B;
+  --bg-deep: #201512;
   --surface: #FFFFFF;
   --surface-raised: #F1ECE6;
   --line: #EAE3DB;
@@ -9,6 +10,8 @@
   --text: #201C18;
   --text-muted: #8C8479;
   --text-faint: #B6AEA2;
+  --text-invert: #F5ECDF;
+  --text-invert-muted: #C9B9A6;
   --radius-lg: 22px;
   --radius-md: 16px;
   --radius-sm: 11px;
@@ -21,7 +24,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%) fixed;
   color: var(--text);
   font-family: 'Manrope', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -163,6 +166,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .section__title {
   font-size: 19px;
   font-weight: 600;
+  color: var(--text-invert);
   margin-bottom: 12px;
   scroll-margin-top: 64px;
   position: relative;
@@ -318,7 +322,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   padding: 6px 24px 20px;
   font-size: 12px;
   line-height: 1.5;
-  color: var(--text-faint);
+  color: var(--text-invert-muted);
   text-align: center;
 }
 
