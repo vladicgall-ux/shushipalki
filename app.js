@@ -116,8 +116,8 @@ const tg = window.Telegram ? window.Telegram.WebApp : null;
 if (tg) {
   tg.ready();
   tg.expand();
-  try { tg.setHeaderColor('#16110D'); } catch (e) {}
-  try { tg.setBackgroundColor('#16110D'); } catch (e) {}
+  try { tg.setHeaderColor('#F6F4F1'); } catch (e) {}
+  try { tg.setBackgroundColor('#F6F4F1'); } catch (e) {}
 }
 
 // ===== Состояние корзины =====
@@ -196,7 +196,7 @@ function buildCatalog() {
     return `
       <section class="section" id="cat-${cat.key}">
         <h2 class="section__title">${cat.title}</h2>
-        ${items.map(renderCard).join('')}
+        <div class="cards-grid">${items.map(renderCard).join('')}</div>
       </section>`;
   }).join('');
 
@@ -241,16 +241,17 @@ function renderCard(p) {
       <div class="card__media" style="background:${mediaBg(p)}">${hitBadge}${media}</div>
       <div class="card__body">
         <p class="card__name">${p.name}</p>
-        <p class="card__desc">${p.desc}</p>
-        <p class="card__price">${fmt(p.price)}</p>
+        <div class="card__footer">
+          <span class="card__price">${fmt(p.price)}</span>
+          ${control}
+        </div>
       </div>
-      ${control}
     </article>`;
 }
 
 function mediaBg(p) {
   if (p.photo) return 'transparent';
-  return 'linear-gradient(135deg, #E4572E 0%, #F3B531 100%)';
+  return 'linear-gradient(135deg, #E5372E 0%, #F0A93B 100%)';
 }
 
 // Перерисовать только те карточки, у которых изменилось состояние (через полный ререндер каталога — проще и надёжно для этого размера меню)

@@ -1,14 +1,14 @@
 :root {
-  --bg: #16110D;
-  --surface: #1E1712;
-  --surface-raised: #271D16;
-  --line: #33261C;
-  --chili: #E4572E;
-  --chili-dim: #b8431f;
-  --saffron: #F3B531;
-  --text: #F5ECDF;
-  --text-muted: #A99A8A;
-  --text-faint: #6E6154;
+  --bg: #F6F4F1;
+  --surface: #FFFFFF;
+  --surface-raised: #F1ECE6;
+  --line: #EAE3DB;
+  --chili: #E5372E;
+  --chili-dim: #C22A21;
+  --saffron: #F0A93B;
+  --text: #201C18;
+  --text-muted: #8C8479;
+  --text-faint: #B6AEA2;
   --radius-lg: 22px;
   --radius-md: 16px;
   --radius-sm: 11px;
@@ -16,6 +16,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 html, body {
   margin: 0;
@@ -176,43 +177,45 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   background: linear-gradient(180deg, var(--chili), var(--saffron));
 }
 
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
 .card {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px;
+  flex-direction: column;
   border-radius: var(--radius-md);
   background: var(--surface);
   border: 1px solid var(--line);
-  margin-bottom: 10px;
+  box-shadow: 0 2px 10px rgba(32,28,24,.05);
+  overflow: hidden;
   cursor: pointer;
-  transition: border-color .15s ease, transform .08s ease, background .15s ease;
+  transition: border-color .15s ease, transform .08s ease, box-shadow .15s ease;
 }
 .card:active {
   transform: scale(.985);
-  background: var(--surface-raised);
+  box-shadow: 0 1px 4px rgba(32,28,24,.06);
 }
 
 .card__media {
-  flex: none;
-  width: 76px;
-  height: 76px;
-  border-radius: var(--radius-sm);
+  width: 100%;
+  aspect-ratio: 4 / 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
+  font-size: 34px;
   overflow: hidden;
   position: relative;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
 }
 .card__media img {
   width: 100%; height: 100%; object-fit: cover;
 }
 .card__badge {
   position: absolute;
-  top: 4px;
-  left: 4px;
+  top: 8px;
+  left: 8px;
   z-index: 2;
   background: var(--chili);
   color: #fff;
@@ -220,19 +223,23 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   font-weight: 800;
   letter-spacing: .03em;
   text-transform: uppercase;
-  padding: 2px 6px;
+  padding: 3px 7px;
   border-radius: 999px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.35);
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
 }
 .card__badge--static { position: static; display: inline-block; margin-bottom: 8px; }
 
-.card__body { flex: 1; min-width: 0; }
+.card__body { flex: 1; min-width: 0; padding: 10px 12px 12px; display: flex; flex-direction: column; }
 .card__name {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--text);
-  margin: 0 0 3px;
-  line-height: 1.25;
+  margin: 0 0 8px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .card__desc {
   font-size: 12.5px;
@@ -244,21 +251,27 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.card__footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
 .card__price {
-  margin-top: 7px;
   font-size: 14.5px;
   font-weight: 700;
-  color: var(--saffron);
+  color: var(--text);
 }
 
 .card__add {
   flex: none;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: var(--chili);
   color: #fff;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -271,7 +284,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   flex: none;
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   background: var(--surface-raised);
   border-radius: 999px;
   padding: 4px;
@@ -324,7 +337,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   color: #fff;
   padding: 13px 16px;
   border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(228,87,46,.35);
+  box-shadow: 0 10px 30px rgba(229,55,46,.35);
   animation: rise .22s ease;
 }
 @keyframes rise {
