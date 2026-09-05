@@ -424,15 +424,12 @@ if (tg) {
 // ===== Состояние корзины =====
 let cart = {}; // { productId: qty }
 
+// Корзина не сохраняется между визитами — при каждом открытии приложения она пустая.
 function loadCart() {
-  try {
-    const raw = localStorage.getItem('vkusnoedem_cart');
-    if (raw) cart = JSON.parse(raw);
-  } catch (e) { cart = {}; }
+  cart = {};
+  try { localStorage.removeItem('vkusnoedem_cart'); } catch (e) {}
 }
-function saveCart() {
-  try { localStorage.setItem('vkusnoedem_cart', JSON.stringify(cart)); } catch (e) {}
-}
+function saveCart() {}
 
 function cartQty(id) { return cart[id] || 0; }
 function cartCount() { return Object.values(cart).reduce((a, b) => a + b, 0); }
@@ -452,6 +449,11 @@ function removeItem(id) {
   if (!cart[id]) return;
   cart[id] -= 1;
   if (cart[id] <= 0) delete cart[id];
+  saveCart();
+  renderAll();
+}
+function deleteItem(id) {
+  delete cart[id];
   saveCart();
   renderAll();
 }
@@ -694,6 +696,7 @@ function renderSheet() {
         </div>
         <span class="sheet-row__name">${p.name}</span>
         <span class="sheet-row__price">${fmt(p.price * qty)}</span>
+        <button class="sheet-row__remove" data-delete="${p.id}" aria-label="Удалить">✕</button>
       </div>`;
   }).join('');
   sheetTotalEl.textContent = fmt(cartTotal());
@@ -702,8 +705,10 @@ function renderSheet() {
 sheetItemsEl.addEventListener('click', (e) => {
   const plusBtn = e.target.closest('[data-plus]');
   const minusBtn = e.target.closest('[data-minus]');
+  const deleteBtn = e.target.closest('[data-delete]');
   if (plusBtn) addItem(Number(plusBtn.dataset.plus));
   if (minusBtn) removeItem(Number(minusBtn.dataset.minus));
+  if (deleteBtn) deleteItem(Number(deleteBtn.dataset.delete));
 });
 
 // ===== Карточка товара (детальный просмотр) =====
@@ -821,7 +826,7 @@ async function submitOrder() {
   };
 
   checkoutBtn.disabled = true;
-  checkoutBtn.textContent = 'ОтправляемҦ';
+  checkoutBtn.textContent = 'Отправляем…';
 
   try {
     const res = await fetch('/api/order', {
@@ -844,7 +849,7 @@ async function submitOrder() {
       alert('Заказ отправлен! Мы свяжемся с вами для подтверждения.');
     }
   } catch (e) {
-    showOrderError('Не удалось отправить заказ. Попробуйте ещё раз или напишите в сообщество: vk.ru/vkusnoedem');
+    showOrderError('Не удалось отправить заказ. Попробуйте ещё раз или позвоните: +7 963 080-89-89');
   } finally {
     checkoutBtn.disabled = false;
     checkoutBtn.textContent = 'Оформить заказ';

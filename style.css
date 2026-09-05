@@ -436,6 +436,19 @@ body.has-cartbar .call-fab-wrap {
   min-width: 66px;
   text-align: right;
 }
+.sheet-row__remove {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color .15s ease, background .15s ease;
+}
+.sheet-row__remove:active { background: var(--surface-raised); color: var(--error); }
 .sheet__total {
   display: flex;
   justify-content: space-between;
