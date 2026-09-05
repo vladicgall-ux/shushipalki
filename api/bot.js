@@ -11,9 +11,18 @@
 const { d1Query } = require('./_lib');
 
 const TELEGRAM_API = (token) => `https://api.telegram.org/bot${token}`;
+const BANNER_URL = 'https://shushipalki.vercel.app/assets/hero-banner.jpg';
 
 function sendMessage(token, payload) {
   return fetch(`${TELEGRAM_API(token)}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+}
+
+function sendPhoto(token, payload) {
+  return fetch(`${TELEGRAM_API(token)}/sendPhoto`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -43,9 +52,10 @@ async function saveAuthorized(userId, phone, firstName) {
 }
 
 function askForContact(token, chatId) {
-  return sendMessage(token, {
+  return sendPhoto(token, {
     chat_id: chatId,
-    text:
+    photo: BANNER_URL,
+    caption:
       '👋 Добро пожаловать в «Суши Палки»!\n\n' +
       'Чтобы открыть меню и оформлять заказы, поделитесь, пожалуйста, своим контактом — это нужно для связи по заказу.',
     reply_markup: {
@@ -57,14 +67,14 @@ function askForContact(token, chatId) {
 }
 
 function sendMenuButton(token, chatId, appUrl) {
-  return sendMessage(token, {
+  return sendPhoto(token, {
     chat_id: chatId,
-    text:
+    photo: BANNER_URL,
+    caption:
       '✅ Спасибо! Теперь вам доступно меню «Суши Палки».\n\n' +
       'Роллы, пицца и снэки с доставкой по Кунашаку и району.\n\n' +
       'Откройте меню и оформите заказ прямо здесь, в Telegram 👇',
     reply_markup: {
-      remove_keyboard: true,
       inline_keyboard: [[
         { text: '🍣 Открыть меню', web_app: { url: appUrl } },
       ]],
