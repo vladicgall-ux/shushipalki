@@ -691,15 +691,21 @@ function renderSheet() {
   sheetItemsEl.innerHTML = entries.map(([id, qty]) => {
     const p = PRODUCTS.find(p => p.id === Number(id));
     if (!p) return '';
+    const media = p.photo
+      ? `<img src="${p.photo}" alt="${p.name}" loading="lazy" />`
+      : p.emoji;
     return `
       <div class="sheet-row">
+        <div class="sheet-row__media" style="background:${mediaBg(p)}">${media}</div>
+        <div class="sheet-row__info">
+          <span class="sheet-row__name">${p.name}</span>
+          <span class="sheet-row__price">${fmt(p.price * qty)}</span>
+        </div>
         <div class="card__stepper">
           <button data-minus="${p.id}" aria-label="Убрать">−</button>
           <span>${qty}</span>
           <button data-plus="${p.id}" aria-label="Добавить">+</button>
         </div>
-        <span class="sheet-row__name">${p.name}</span>
-        <span class="sheet-row__price">${fmt(p.price * qty)}</span>
         <button class="sheet-row__remove" data-delete="${p.id}" aria-label="Удалить">✕</button>
       </div>`;
   }).join('');
