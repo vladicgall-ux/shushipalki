@@ -540,27 +540,31 @@ function buildCatalog() {
       </section>`;
   }).join('');
 
-  catnavEl.addEventListener('click', (e) => {
-    const btn = e.target.closest('.catchip');
-    if (!btn) return;
-    const target = document.getElementById('cat-' + btn.dataset.cat);
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  menuEl.addEventListener('click', (e) => {
-    const addBtn = e.target.closest('[data-add]');
-    const plusBtn = e.target.closest('[data-plus]');
-    const minusBtn = e.target.closest('[data-minus]');
-    const card = e.target.closest('.card');
-
-    if (addBtn) { addItem(Number(addBtn.dataset.add)); return; }
-    if (plusBtn) { addItem(Number(plusBtn.dataset.plus)); return; }
-    if (minusBtn) { removeItem(Number(minusBtn.dataset.minus)); return; }
-    if (card) { openProductModal(Number(card.dataset.id)); }
-  });
-
   setupScrollSpy();
 }
+
+// Обработчики навешаны один раз на постоянные контейнеры (делегирование
+// событий) — buildCatalog() перерисовывает только их innerHTML, поэтому
+// вешать слушатели внутри buildCatalog нельзя: они бы копились с каждым
+// ререндером и один клик срабатывал бы по нескольку раз.
+catnavEl.addEventListener('click', (e) => {
+  const btn = e.target.closest('.catchip');
+  if (!btn) return;
+  const target = document.getElementById('cat-' + btn.dataset.cat);
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+menuEl.addEventListener('click', (e) => {
+  const addBtn = e.target.closest('[data-add]');
+  const plusBtn = e.target.closest('[data-plus]');
+  const minusBtn = e.target.closest('[data-minus]');
+  const card = e.target.closest('.card');
+
+  if (addBtn) { addItem(Number(addBtn.dataset.add)); return; }
+  if (plusBtn) { addItem(Number(plusBtn.dataset.plus)); return; }
+  if (minusBtn) { removeItem(Number(minusBtn.dataset.minus)); return; }
+  if (card) { openProductModal(Number(card.dataset.id)); }
+});
 
 function renderCard(p) {
   const qty = cartQty(p.id);
