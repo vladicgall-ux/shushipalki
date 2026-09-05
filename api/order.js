@@ -80,7 +80,7 @@ module.exports = async (req, res) => {
     : `Доставка: ${customer.address || 'адрес не указан'}`;
 
   const adminText =
-    `🆕 <b>Новый заказ — Вкусно едем</b>${verified ? '' : ' ⚠️ (initData не подтверждён)'}\n\n` +
+    `🆕 <b>Новый заказ — Суши Палки</b>${verified ? '' : ' ⚠️ (initData не подтверждён)'}\n\n` +
     `👤 ${customer.name}\n` +
     `📞 ${customer.phone}\n` +
     `🚗 ${deliveryLine}\n` +
@@ -91,7 +91,7 @@ module.exports = async (req, res) => {
 
   const customerText =
     `✅ <b>Заказ принят!</b>\n\n${itemsLines}\n\n<b>Итого: ${fmt(total)}</b>\n\n` +
-    `${deliveryLine}\n\nМы свяжемся с вами для подтверждения. Спасибо, что заказали в «Вкусно едем»!`;
+    `${deliveryLine}\n\nМы свяжемся с вами для подтверждения. Спасибо, что заказали в «Суши Палки»!`;
 
   try {
     await sendTelegramMessage(BOT_TOKEN, ADMIN_CHAT_ID, adminText);

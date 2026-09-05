@@ -1,17 +1,19 @@
 :root {
-  --bg: #2E1F1B;
-  --bg-deep: #201512;
+  --bg: #10140F;
+  --bg-deep: #0A0C08;
   --surface: #FFFFFF;
-  --surface-raised: #F1ECE6;
-  --line: #EAE3DB;
-  --chili: #E5372E;
-  --chili-dim: #C22A21;
-  --saffron: #F0A93B;
+  --surface-raised: #EFF4EC;
+  --line: #E2E8DE;
+  --chili: #22873F;
+  --chili-dim: #1B6E32;
+  --saffron: #4FCB3A;
+  --saffron-text: #178A43;
+  --error: #E5372E;
   --text: #201C18;
   --text-muted: #8C8479;
   --text-faint: #B6AEA2;
-  --text-invert: #F5ECDF;
-  --text-invert-muted: #C9B9A6;
+  --text-invert: #F2F7EF;
+  --text-invert-muted: #B9C7B4;
   --radius-lg: 22px;
   --radius-md: 16px;
   --radius-sm: 11px;
@@ -59,7 +61,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .hero__banner {
   width: 100%;
-  aspect-ratio: 830 / 301;
+  aspect-ratio: 1400 / 347;
   overflow: hidden;
 }
 .hero__banner img {
@@ -115,7 +117,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 .catchip.is-active {
-  color: #1a0f08;
+  color: #0E1A0C;
   background: var(--saffron);
   border-color: var(--saffron);
 }
@@ -308,7 +310,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   color: #fff;
   padding: 13px 16px;
   border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(229,55,46,.35);
+  box-shadow: 0 10px 30px rgba(34,135,63,.35);
   animation: rise .22s ease;
 }
 @keyframes rise {
@@ -341,7 +343,7 @@ body.has-cartbar .call-fab-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 22px rgba(229,55,46,.4);
+  box-shadow: 0 8px 22px rgba(34,135,63,.4);
   transition: transform .1s ease;
 }
 .call-fab:active { transform: scale(.92); }
@@ -444,7 +446,7 @@ body.has-cartbar .call-fab-wrap {
   font-size: 14px;
   color: var(--text-muted);
 }
-.sheet__total strong { font-size: 19px; color: var(--saffron); }
+.sheet__total strong { font-size: 19px; color: var(--saffron-text); }
 .sheet__checkout {
   background: var(--chili);
   color: #fff;
@@ -477,7 +479,7 @@ body.has-cartbar .call-fab-wrap {
   border: 1px solid var(--line);
 }
 .order-form__toggle-btn.is-active {
-  color: #1a0f08;
+  color: #0E1A0C;
   background: var(--saffron);
   border-color: var(--saffron);
 }
@@ -495,7 +497,7 @@ body.has-cartbar .call-fab-wrap {
 .order-form__input:focus { outline: none; border-color: var(--saffron); }
 .order-form__textarea { resize: none; min-height: 56px; }
 .order-form__error {
-  color: var(--chili);
+  color: var(--error);
   font-size: 12.5px;
   margin: 2px 2px 0;
 }
@@ -543,7 +545,7 @@ body.has-cartbar .call-fab-wrap {
 .product-modal__price {
   font-size: 17px;
   font-weight: 800;
-  color: var(--saffron);
+  color: var(--saffron-text);
   margin: 0 0 12px;
 }
 .product-modal__desc {
