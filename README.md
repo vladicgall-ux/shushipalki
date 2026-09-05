@@ -2,7 +2,7 @@
 
 Доставка роллов, пиццы и снэков в Кунашаке. Мини-приложение для Telegram + бот на вебхуках, всё на Vercel.
 
-**Живой адрес:** https://vkusnoedem.vercel.app
+**Живой адрес:** https://shushipalki.vercel.app
 
 ## Стек
 - Фронтенд: чистые HTML/CSS/JS (без сборки), Telegram Web App SDK
@@ -30,7 +30,7 @@ api/set-webhook.js — разовая регистрация вебхука и �
    |---|---|
    | `BOT_TOKEN` | токен от BotFather |
    | `ADMIN_CHAT_ID` | ваш Telegram chat ID (куда будут падать уведомления о заказах) |
-   | `APP_URL` | `https://vkusnoedem.vercel.app` |
+   | `APP_URL` | `https://shushipalki.vercel.app` |
 
    Узнать свой `chat_id`: напишите боту [@userinfobot](https://t.me/userinfobot) — он пришлёт ваш ID.
 
@@ -38,12 +38,12 @@ api/set-webhook.js — разовая регистрация вебхука и �
 
 3. **Зарегистировать вебхук.** Откройте в браузере один раз:
    ```
-   https://vkusnoedem.vercel.app/api/set-webhook
+   https://shushipalki.vercel.app/api/set-webhook
    ```
    Должен вернуться `{"ok":true, ...}`. Это одновременно ставит вебхук бота и кнопку «Меню» рядом с полем ввода в чате.
 
 4. **Подключить Mini App в BotFather** (чтобы приложение открывалось не только по кнопке из `/start`, но и через cредесией бота):
-   `@BotFather` → `/mybots` → выбрать бота → **Bot Settings → Menu Button** → указать `https://vkusnoedem.vercel.app`.
+   `@BotFather` → `/mybots` → выбрать бота → **Bot Settings → Menu Button** → указать `https://shushipalki.vercel.app`.
    Также можно включить полноценный Mini App через `/newapp`, если нужна отдельная карточка приложения.
 
 5. Готово — напишите боту `/start`, откройте меню, оформите тестовый заказ. Чек придёт вам в личку, а полная информация о заказе — в `ADMIN_CHAT_ID`.

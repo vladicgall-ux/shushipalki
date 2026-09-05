@@ -1,6 +1,6 @@
 // /api/bot — вебхук Telegram-бота.
 // Обрабатывает /start и показывает кнопку запуска Mini App.
-// Требует переменные окружения: BOT_TOKEN, APP_URL (полный https-адрес деплоя, например https://vkusnoedem.vercel.app)
+// Требует переменные окружения: BOT_TOKEN, APP_URL (полный https-адрес деплоя, например https://shushipalki.vercel.app)
 
 const TELEGRAM_API = (token) => `https://api.telegram.org/bot${token}`;
 
@@ -40,7 +40,7 @@ module.exports = async (req, res) => {
             'Откройте меню и оформите заказ прямо здесь, в Telegram 👇',
           reply_markup: {
             inline_keyboard: [[
-              { text: '🍕 Открыть меню', web_app: { url: APP_URL || 'https://vkusnoedem.vercel.app' } },
+              { text: '🍕 Открыть меню', web_app: { url: APP_URL || 'https://shushipalki.vercel.app' } },
             ]],
           },
         }),
