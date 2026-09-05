@@ -715,6 +715,71 @@ sheetItemsEl.addEventListener('click', (e) => {
   if (deleteBtn) deleteItem(Number(deleteBtn.dataset.delete));
 });
 
+// ===== Профиль: история заказов =====
+const profileFabEl = document.getElementById('profileFab');
+const profileSheetEl = document.getElementById('profileSheet');
+const profileBackdropEl = document.getElementById('profileBackdrop');
+const profileItemsEl = document.getElementById('profileItems');
+const profileCloseEl = document.getElementById('profileClose');
+
+function openProfileSheet() {
+  closeSheet();
+  closeProductModal();
+  profileSheetEl.hidden = false;
+  profileBackdropEl.hidden = false;
+  loadOrderHistory();
+}
+function closeProfileSheet() {
+  profileSheetEl.hidden = true;
+  profileBackdropEl.hidden = true;
+}
+profileFabEl.addEventListener('click', openProfileSheet);
+profileCloseEl.addEventListener('click', closeProfileSheet);
+profileBackdropEl.addEventListener('click', closeProfileSheet);
+
+function formatOrderDate(iso) {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return '';
+  return d.toLocaleString('ru-RU', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+}
+
+async function loadOrderHistory() {
+  if (!tg || !tg.initData) {
+    profileItemsEl.innerHTML = `<p class="empty-cart">Откройте приложение из Telegram, чтобы видеть историю заказов</p>`;
+    return;
+  }
+  profileItemsEl.innerHTML = `<p class="empty-cart">Загружаем…</p>`;
+  try {
+    const res = await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ initData: tg.initData }),
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || 'Ошибка загрузки');
+
+    if (!data.orders.length) {
+      profileItemsEl.innerHTML = `<p class="empty-cart">У вас пока нет заказов</p>`;
+      return;
+    }
+    profileItemsEl.innerHTML = data.orders.map(o => {
+      const itemsLine = o.items.map(i => `${i.name} × ${i.qty}`).join(', ');
+      const deliveryLine = o.pickup ? 'Самовывоз' : `Доставка: ${o.address || 'адрес не указан'}`;
+      return `
+        <div class="order-history-item">
+          <div class="order-history-item__head">
+            <span class="order-history-item__date">${formatOrderDate(o.createdAt)}</span>
+            <span class="order-history-item__total">${fmt(o.total)}</span>
+          </div>
+          <p class="order-history-item__items">${itemsLine}</p>
+          <p class="order-history-item__delivery">${deliveryLine}</p>
+        </div>`;
+    }).join('');
+  } catch (e) {
+    profileItemsEl.innerHTML = `<p class="empty-cart">Не удалось загрузить историю заказов</p>`;
+  }
+}
+
 // ===== Карточка товара (детальный просмотр) =====
 const modalEl = document.getElementById('productModal');
 const modalBackdropEl = document.getElementById('productModalBackdrop');

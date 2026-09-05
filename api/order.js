@@ -1,37 +1,13 @@
-// /api/order — принимает заказ из Mini App и рассылает уведомления в Telegram.
+// /api/order — принимает заказ из Mini App, сохраняет его в историю (Cloudflare D1)
+// и рассылает уведомления в Telegram.
 // Ожидает POST JSON: { initData, customer: { name, phone, address, pickup, comment }, items: [{name, qty, price}], total }
 // Требует переменные окружения: BOT_TOKEN, ADMIN_CHAT_ID
+// Для истории заказов (необязательно, но без этого «Мои заказы» не работают):
+// CF_ACCOUNT_ID, CF_D1_DATABASE_ID, CF_API_TOKEN
+
+const { verifyInitData, d1Query } = require('./_lib');
 
 const TELEGRAM_API = (token) => `https://api.telegram.org/bot${token}`;
-
-function verifyInitData(initData, botToken) {
-  // Проверка подписи инидычение Telegram (HMAC-SHA256).
-  // Если initData отсутствует (например, тестовый запуск вне Telegram) — пропускаем без cредесией могр куэт строгой проверки,
-  // но помечаем  заказа как непроверенный в admin-уведомлении.
-  if (!initData || !botToken) return { ok: false, userId: null };
-  try {
-    const crypto = require('crypto');
-    const params = new URLSearchParams(initData);
-    const hash = params.get('hash');
-    params.delete('hash');
-    const dataCheckArr = [];
-    for (const [key, value] of [...params.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
-      dataCheckArr.push(`${key}=${value}`);
-    }
-    const dataCheckString = dataCheckArr.join('\n');
-    const secretKey = crypto.createHmac('sha256', 'WebAppData').update(botToken).digest();
-    const computedHash = crypto.createHmac('sha256', secretKey).update(dataCheckString).digest('hex');
-    const ok = computedHash === hash;
-    let userId = null;
-    try {
-      const userRaw = params.get('user');
-      if (userRaw) userId = JSON.parse(userRaw).id;
-    } catch (e) {}
-    return { ok, userId };
-  } catch (e) {
-    return { ok: false, userId: null };
-  }
-}
 
 async function sendTelegramMessage(token, chatId, text) {
   const res = await fetch(`${TELEGRAM_API(token)}/sendMessage`, {
@@ -92,6 +68,31 @@ module.exports = async (req, res) => {
   const customerText =
     `✅ <b>Заказ принят!</b>\n\n${itemsLines}\n\n<b>Итого: ${fmt(total)}</b>\n\n` +
     `${deliveryLine}\n\nМы свяжемся с вами для подтверждения. Спасибо, что заказали в «Суши Палки»!`;
+
+  // Сохраняем заказ в историю (для экрана «Мои заказы»), только если Telegram-пользователь
+  // подтверждён подписью initData — иначе id можно подделать. Сбой записи в БД не должен
+  // мешать оформлению заказа: уведомления в Telegram — обязательная часть, история — нет.
+  if (verified && userId) {
+    try {
+      await d1Query(
+        `INSERT INTO orders (telegram_user_id, created_at, customer_name, customer_phone, customer_address, pickup, comment, items_json, total)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          String(userId),
+          new Date().toISOString(),
+          customer.name,
+          customer.phone,
+          customer.address || '',
+          customer.pickup ? 1 : 0,
+          customer.comment || '',
+          JSON.stringify(items),
+          total,
+        ]
+      );
+    } catch (e) {
+      console.error('D1 insert failed:', e.message);
+    }
+  }
 
   try {
     await sendTelegramMessage(BOT_TOKEN, ADMIN_CHAT_ID, adminText);
