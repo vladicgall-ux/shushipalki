@@ -1,6 +1,11 @@
-// /api/set-webhook — одноразовый эндпоинт для регистрации вебхука бота и кнопки меню.
+// /api/set-webhook — одноразовый эндпоинт для регистрации вебхука бота.
 // Открыть один раз в браузере после деплоя: https://<ваш-домен>/api/set-webhook
 // Требует переменные окружения: BOT_TOKEN, APP_URL
+//
+// Кнопка меню намеренно НЕ ставится на web_app: она открывала бы приложение
+// напрямую, в обход запроса контакта в /start. Меню оставлено стандартным
+// (список команд) — доступ в приложение идёт только через кнопку в /start,
+// которая появляется лишь после того, как пользователь поделился контактом.
 
 const TELEGRAM_API = (token) => `https://api.telegram.org/bot${token}`;
 
@@ -24,9 +29,7 @@ module.exports = async (req, res) => {
     const menuRes = await fetch(`${TELEGRAM_API(BOT_TOKEN)}/setChatMenuButton`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        menu_button: { type: 'web_app', text: 'Меню', web_app: { url: APP_URL } },
-      }),
+      body: JSON.stringify({ menu_button: { type: 'commands' } }),
     });
     const menuData = await menuRes.json();
 

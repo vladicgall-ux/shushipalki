@@ -664,7 +664,7 @@ cartbarEl.addEventListener('click', () => openSheet());
 const sheetEl = document.getElementById('sheet');
 const sheetBackdropEl = document.getElementById('sheetBackdrop');
 const sheetItemsEl = document.getElementById('sheetItems');
-const sheetTotalEl = document.getElementById('sheetTotal').querySelector('strong');
+const sheetTotalEl = document.getElementById('sheetTotal');
 const sheetCloseEl = document.getElementById('sheetClose');
 const checkoutBtn = document.getElementById('checkoutBtn');
 
