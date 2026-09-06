@@ -698,8 +698,12 @@ function renderAddons() {
            <button data-plus="${p.id}" aria-label="Добавить">+</button>
          </div>`
       : `<button class="addon-tile__add" data-add="${p.id}">Добавить</button>`;
+    const media = p.photo
+      ? `<img src="${p.photo}" alt="${p.name}" loading="lazy" />`
+      : p.emoji;
     return `
       <div class="addon-tile">
+        <div class="addon-tile__media" style="background:${mediaBg(p)}">${media}</div>
         <span class="addon-tile__name">${p.name}</span>
         <span class="addon-tile__price">${fmt(p.price)}</span>
         ${control}
