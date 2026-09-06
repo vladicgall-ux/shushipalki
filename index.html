@@ -105,6 +105,7 @@
       <button class="sheet__close" id="sheetClose" type="button" aria-label="Закрыть">✕</button>
     </div>
     <div class="sheet__items" id="sheetItems"></div>
+    <div class="sheet__addons" id="sheetAddons"></div>
     <div class="sheet__total">
       <span>Итого</span>
       <strong id="sheetTotal">0 ₽</strong>
@@ -119,6 +120,14 @@
       <input class="order-form__input" id="custPhone" type="tel" placeholder="Телефон" autocomplete="tel" />
       <input class="order-form__input" id="custAddress" type="text" placeholder="Адрес доставки" autocomplete="street-address" />
       <textarea class="order-form__input order-form__textarea" id="custComment" placeholder="Комментарий к заказу (необязательно)"></textarea>
+      <div class="order-form__persons">
+        <span>Укажите количество персон</span>
+        <div class="card__stepper">
+          <button type="button" id="personsMinus" aria-label="Меньше">−</button>
+          <span id="personsCount">1</span>
+          <button type="button" id="personsPlus" aria-label="Больше">+</button>
+        </div>
+      </div>
       <p class="order-form__error" id="orderError" hidden></p>
     </div>
 

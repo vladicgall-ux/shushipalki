@@ -471,6 +471,44 @@ body.has-cartbar .call-fab-wrap {
   transition: color .15s ease, background .15s ease;
 }
 .sheet-row__remove:active { background: var(--surface-raised); color: var(--error); }
+
+/* ===== БЫСТРЫЕ ДОПЫ В КОРЗИНЕ ===== */
+.sheet__addons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.sheet__addons:empty { display: none; }
+.addon-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.addon-tile__name {
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.addon-tile__price {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--saffron-text);
+}
+.addon-tile__add {
+  margin-top: auto;
+  background: var(--chili);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 999px;
+}
+.addon-tile .card__stepper { align-self: flex-start; margin-top: auto; }
+
 .sheet__total {
   display: flex;
   justify-content: space-between;
@@ -531,6 +569,15 @@ body.has-cartbar .call-fab-wrap {
 .order-form__input::placeholder { color: var(--text-faint); }
 .order-form__input:focus { outline: none; border-color: var(--saffron); }
 .order-form__textarea { resize: none; min-height: 56px; }
+.order-form__persons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 2px;
+  font-size: 14px;
+  font-weight: 600;
+}
 .order-form__error {
   color: var(--error);
   font-size: 12.5px;

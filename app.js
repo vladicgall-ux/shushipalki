@@ -664,6 +664,7 @@ cartbarEl.addEventListener('click', () => openSheet());
 const sheetEl = document.getElementById('sheet');
 const sheetBackdropEl = document.getElementById('sheetBackdrop');
 const sheetItemsEl = document.getElementById('sheetItems');
+const sheetAddonsEl = document.getElementById('sheetAddons');
 const sheetTotalEl = document.getElementById('sheetTotal');
 const sheetCloseEl = document.getElementById('sheetClose');
 const checkoutBtn = document.getElementById('checkoutBtn');
@@ -681,11 +682,37 @@ function closeSheet() {
 sheetCloseEl.addEventListener('click', closeSheet);
 sheetBackdropEl.addEventListener('click', closeSheet);
 
+// Быстрые допы прямо в корзине — популярные позиции к роллам, чтобы не
+// искать их отдельно в каталоге.
+const ADDON_IDS = [94, 93, 92]; // Имбирь белый, Соевый соус, Васаби
+
+function renderAddons() {
+  sheetAddonsEl.innerHTML = ADDON_IDS.map(id => {
+    const p = PRODUCTS.find(p => p.id === id);
+    if (!p) return '';
+    const qty = cartQty(p.id);
+    const control = qty > 0
+      ? `<div class="card__stepper">
+           <button data-minus="${p.id}" aria-label="Убрать">−</button>
+           <span>${qty}</span>
+           <button data-plus="${p.id}" aria-label="Добавить">+</button>
+         </div>`
+      : `<button class="addon-tile__add" data-add="${p.id}">Добавить</button>`;
+    return `
+      <div class="addon-tile">
+        <span class="addon-tile__name">${p.name}</span>
+        <span class="addon-tile__price">${fmt(p.price)}</span>
+        ${control}
+      </div>`;
+  }).join('');
+}
+
 function renderSheet() {
   const entries = Object.entries(cart);
   if (!entries.length) {
     sheetItemsEl.innerHTML = `<p class="empty-cart">Корзина пуста — добавьте что-нибудь вкусное</p>`;
     sheetTotalEl.textContent = fmt(0);
+    sheetAddonsEl.innerHTML = '';
     return;
   }
   sheetItemsEl.innerHTML = entries.map(([id, qty]) => {
@@ -710,6 +737,7 @@ function renderSheet() {
       </div>`;
   }).join('');
   sheetTotalEl.textContent = fmt(cartTotal());
+  renderAddons();
 }
 
 sheetItemsEl.addEventListener('click', (e) => {
@@ -719,6 +747,15 @@ sheetItemsEl.addEventListener('click', (e) => {
   if (plusBtn) addItem(Number(plusBtn.dataset.plus));
   if (minusBtn) removeItem(Number(minusBtn.dataset.minus));
   if (deleteBtn) deleteItem(Number(deleteBtn.dataset.delete));
+});
+
+sheetAddonsEl.addEventListener('click', (e) => {
+  const addBtn = e.target.closest('[data-add]');
+  const plusBtn = e.target.closest('[data-plus]');
+  const minusBtn = e.target.closest('[data-minus]');
+  if (addBtn) addItem(Number(addBtn.dataset.add));
+  if (plusBtn) addItem(Number(plusBtn.dataset.plus));
+  if (minusBtn) removeItem(Number(minusBtn.dataset.minus));
 });
 
 // ===== Профиль: история заказов =====
@@ -853,7 +890,24 @@ const custAddressEl = document.getElementById('custAddress');
 const custCommentEl = document.getElementById('custComment');
 const orderErrorEl = document.getElementById('orderError');
 const deliveryToggleEl = document.querySelector('.order-form__toggle');
+const personsMinusEl = document.getElementById('personsMinus');
+const personsPlusEl = document.getElementById('personsPlus');
+const personsCountEl = document.getElementById('personsCount');
 let deliveryMode = 'courier'; // 'courier' | 'pickup'
+let personsCount = 1; // просто информация для заказа, ни на что не влияет
+
+function renderPersons() {
+  personsCountEl.textContent = personsCount;
+}
+if (personsMinusEl && personsPlusEl) {
+  personsMinusEl.addEventListener('click', () => {
+    if (personsCount > 1) { personsCount--; renderPersons(); }
+  });
+  personsPlusEl.addEventListener('click', () => {
+    personsCount++;
+    renderPersons();
+  });
+}
 
 if (deliveryToggleEl) {
   deliveryToggleEl.addEventListener('click', (e) => {
@@ -895,7 +949,7 @@ async function submitOrder() {
 
   const payload = {
     initData: tg ? tg.initData : '',
-    customer: { name, phone, address, pickup: deliveryMode === 'pickup', comment },
+    customer: { name, phone, address, pickup: deliveryMode === 'pickup', comment, persons: personsCount },
     items: order,
     total: cartTotal(),
   };
@@ -914,6 +968,8 @@ async function submitOrder() {
 
     cart = {};
     saveCart();
+    personsCount = 1;
+    renderPersons();
     closeSheet();
     renderAll();
 

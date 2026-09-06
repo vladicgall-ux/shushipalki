@@ -60,6 +60,7 @@ module.exports = async (req, res) => {
     `👤 ${customer.name}\n` +
     `📞 ${customer.phone}\n` +
     `🚗 ${deliveryLine}\n` +
+    (customer.persons ? `👥 Персон: ${customer.persons}\n` : '') +
     (customer.comment ? `💬 ${customer.comment}\n` : '') +
     (userId ? `🆔 Telegram ID: ${userId}\n` : '') +
     `\n${itemsLines}\n\n` +
