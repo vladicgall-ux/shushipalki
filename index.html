@@ -104,22 +104,35 @@
       <h2>Ваш заказ</h2>
       <button class="sheet__close" id="sheetClose" type="button" aria-label="Закрыть">✕</button>
     </div>
-    <div class="sheet__items" id="sheetItems"></div>
-    <div class="sheet__total">
-      <span>Итого</span>
-      <strong id="sheetTotal">0 ₽</strong>
-    </div>
-
-    <div class="order-form">
-      <div class="order-form__toggle">
-        <button type="button" class="order-form__toggle-btn is-active" data-delivery="courier">Доставка</button>
-        <button type="button" class="order-form__toggle-btn" data-delivery="pickup">Самовывоз</button>
+    <div class="sheet__scroll">
+      <div class="sheet__items" id="sheetItems"></div>
+      <div class="sheet__total">
+        <span>Итого</span>
+        <strong id="sheetTotal">0 ₽</strong>
       </div>
-      <input class="order-form__input" id="custName" type="text" placeholder="Ваше имя" autocomplete="name" />
-      <input class="order-form__input" id="custPhone" type="tel" placeholder="Телефон" autocomplete="tel" />
-      <input class="order-form__input" id="custAddress" type="text" placeholder="Адрес доставки" autocomplete="street-address" />
-      <textarea class="order-form__input order-form__textarea" id="custComment" placeholder="Комментарий к заказу (необязательно)"></textarea>
-      <p class="order-form__error" id="orderError" hidden></p>
+
+      <div class="sheet-suggest" id="sheetSuggest"></div>
+
+      <div class="order-form">
+        <div class="order-form__toggle">
+          <button type="button" class="order-form__toggle-btn is-active" data-delivery="courier">Доставка</button>
+          <button type="button" class="order-form__toggle-btn" data-delivery="pickup">Самовывоз</button>
+        </div>
+        <input class="order-form__input" id="custName" type="text" placeholder="Ваше имя" autocomplete="name" />
+        <input class="order-form__input" id="custPhone" type="tel" placeholder="Телефон" autocomplete="tel" />
+        <input class="order-form__input" id="custAddress" type="text" placeholder="Адрес доставки" autocomplete="street-address" />
+        <textarea class="order-form__input order-form__textarea" id="custComment" placeholder="Комментарий к заказу (необязательно)"></textarea>
+        <p class="order-form__error" id="orderError" hidden></p>
+
+        <div class="order-form__persons">
+          <span class="order-form__persons-label">Укажите количество персон</span>
+          <div class="card__stepper card__stepper--lg">
+            <button type="button" id="personsMinus" aria-label="Убрать">−</button>
+            <span id="personsCount">1</span>
+            <button type="button" id="personsPlus" aria-label="Добавить">+</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <button class="sheet__checkout" id="checkoutBtn" type="button">Оформить заказ</button>

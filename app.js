@@ -665,8 +665,12 @@ const sheetEl = document.getElementById('sheet');
 const sheetBackdropEl = document.getElementById('sheetBackdrop');
 const sheetItemsEl = document.getElementById('sheetItems');
 const sheetTotalEl = document.getElementById('sheetTotal');
+const sheetSuggestEl = document.getElementById('sheetSuggest');
 const sheetCloseEl = document.getElementById('sheetClose');
 const checkoutBtn = document.getElementById('checkoutBtn');
+
+// Позиции, которые предлагаем добавить к заказу дополнительно (в заказ не входят по умолчанию)
+const SUGGEST_IDS = [94, 93, 92]; // Имбирь белый, Соевый соус, Васаби
 
 function openSheet() {
   closeProductModal();
@@ -710,6 +714,7 @@ function renderSheet() {
       </div>`;
   }).join('');
   sheetTotalEl.textContent = fmt(cartTotal());
+  renderSheetSuggest();
 }
 
 sheetItemsEl.addEventListener('click', (e) => {
@@ -719,6 +724,45 @@ sheetItemsEl.addEventListener('click', (e) => {
   if (plusBtn) addItem(Number(plusBtn.dataset.plus));
   if (minusBtn) removeItem(Number(minusBtn.dataset.minus));
   if (deleteBtn) deleteItem(Number(deleteBtn.dataset.delete));
+});
+
+function renderSheetSuggest() {
+  if (!sheetSuggestEl) return;
+  const items = SUGGEST_IDS.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+  if (!items.length) { sheetSuggestEl.innerHTML = ''; return; }
+  sheetSuggestEl.innerHTML = `
+    <p class="sheet-suggest__title">Не забудьте добавить (в заказ не входит)</p>
+    <div class="sheet-suggest__scroll">
+      ${items.map(p => {
+        const qty = cartQty(p.id);
+        const media = p.photo
+          ? `<img src="${p.photo}" alt="${p.name}" loading="lazy" />`
+          : p.emoji;
+        const control = qty > 0
+          ? `<div class="card__stepper">
+               <button data-minus="${p.id}" aria-label="Убрать">−</button>
+               <span>${qty}</span>
+               <button data-plus="${p.id}" aria-label="Добавить">+</button>
+             </div>`
+          : `<button class="sheet-suggest__add" data-add="${p.id}">Добавить</button>`;
+        return `
+          <div class="sheet-suggest__card">
+            <div class="sheet-suggest__media" style="background:${mediaBg(p)}">${media}</div>
+            <span class="sheet-suggest__name">${p.name}</span>
+            <span class="sheet-suggest__price">${fmt(p.price)}</span>
+            ${control}
+          </div>`;
+      }).join('')}
+    </div>`;
+}
+
+sheetSuggestEl.addEventListener('click', (e) => {
+  const addBtn = e.target.closest('[data-add]');
+  const plusBtn = e.target.closest('[data-plus]');
+  const minusBtn = e.target.closest('[data-minus]');
+  if (addBtn) addItem(Number(addBtn.dataset.add));
+  if (plusBtn) addItem(Number(plusBtn.dataset.plus));
+  if (minusBtn) removeItem(Number(minusBtn.dataset.minus));
 });
 
 // ===== Профиль: история заказов =====
@@ -855,6 +899,29 @@ const orderErrorEl = document.getElementById('orderError');
 const deliveryToggleEl = document.querySelector('.order-form__toggle');
 let deliveryMode = 'courier'; // 'courier' | 'pickup'
 
+// ===== Количество персон =====
+const personsCountEl = document.getElementById('personsCount');
+const personsMinusEl = document.getElementById('personsMinus');
+const personsPlusEl = document.getElementById('personsPlus');
+let personsCount = 1;
+
+function renderPersons() {
+  if (personsCountEl) personsCountEl.textContent = personsCount;
+}
+if (personsMinusEl) {
+  personsMinusEl.addEventListener('click', () => {
+    if (personsCount <= 1) return;
+    personsCount -= 1;
+    renderPersons();
+  });
+}
+if (personsPlusEl) {
+  personsPlusEl.addEventListener('click', () => {
+    personsCount += 1;
+    renderPersons();
+  });
+}
+
 if (deliveryToggleEl) {
   deliveryToggleEl.addEventListener('click', (e) => {
     const btn = e.target.closest('.order-form__toggle-btn');
@@ -895,7 +962,7 @@ async function submitOrder() {
 
   const payload = {
     initData: tg ? tg.initData : '',
-    customer: { name, phone, address, pickup: deliveryMode === 'pickup', comment },
+    customer: { name, phone, address, pickup: deliveryMode === 'pickup', comment, persons: personsCount },
     items: order,
     total: cartTotal(),
   };
@@ -914,6 +981,8 @@ async function submitOrder() {
 
     cart = {};
     saveCart();
+    personsCount = 1;
+    renderPersons();
     closeSheet();
     renderAll();
 
