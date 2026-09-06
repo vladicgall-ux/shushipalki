@@ -350,6 +350,10 @@ body.has-cartbar .call-fab-wrap {
   transition: transform .1s ease;
 }
 .call-fab:active { transform: scale(.92); }
+.call-fab--phone {
+  background: var(--error);
+  box-shadow: 0 8px 22px rgba(229,55,46,.4);
+}
 
 .cartbar__count {
   background: rgba(255,255,255,.22);
